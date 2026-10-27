@@ -1,0 +1,56 @@
+{
+  "ticker": "BBY",
+  "company": "Best Buy",
+  "metric": "gross_margin",
+  "focus_period": "fiscal 2022 (year ended 2023-01-28)",
+  "focus_fiscal_year_end_window": [
+    "2022-10-01",
+    "2023-04-30"
+  ],
+  "comparison": "prior fiscal year (fiscal 2021, year ended 2022-01-29), same 10-K basis per edgar.margin_change",
+  "peers": [
+    "WMT",
+    "TGT",
+    "COST",
+    "DG",
+    "DLTR"
+  ],
+  "excluded_peers": [
+    {
+      "ticker": "KR",
+      "reason": "Kroger's cost_of_sales excludes depreciation and amortization, making gross margin not directly comparable per prior vetted analysis"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "driver": "Sector-wide gross margin compression assessment on consistent 10-K basis",
+      "how_to_test": "Query edgar.margin_change for all peers (WMT, TGT, COST, DG, DLTR) with fiscal_year_end between 2022-10-01 and 2023-04-30. Compute median gross_margin_change. Compare BBY's -1.08 pp to median: if near median, sector-wide driver dominant per lesson 4 (company-specific shifts often dominate, so outlier status matters more than absolute magnitude). If BBY is outlier, company-specific drivers likely primary."
+    },
+    {
+      "id": "H2",
+      "driver": "Company-specific COGS vs revenue dynamics from annual_financials",
+      "how_to_test": "Pull BBY revenue and cost_of_sales for fiscal 2022 and fiscal 2021 from annual_financials. Compute revenue growth and COGS growth. Prior analysis showed revenue -10.55% vs COGS -9.31%; confirm this pattern. If COGS fell less than revenue, gross margin compresses company-specifically. This tests whether margin decline stems from cost-structure shift rather than sector-wide demand destruction."
+    },
+    {
+      "id": "H3",
+      "driver": "Category mix shift within BBY's business (electronics vs appliances vs services)",
+      "how_to_test": "Query financial_fact for BBY revenue by segment/category tag for FY2022 vs FY2021. As lessons 1-2 caution, do NOT equate BLS electronics_margins PPI index changes with gross margin percentage-point changes; treat PPI as complementary price-pressure evidence only. Use PPI data to ask: did manufacturer-unit margin pressure (PPI trend) interact with BBY's category mix to amplify the reported gross margin change?"
+    },
+    {
+      "id": "H4",
+      "driver": "Inventory dynamics and operating-leverage signal (gross vs operating margin gap)",
+      "how_to_test": "From annual_financials, compare BBY inventory levels FY2022 vs FY2021. Prior analysis showed inventory fell 13.8% while revenue fell 10.55%\u2014inventory declined more than revenue, ruling out build-up-driven write-downs per lesson 3. Confirm: if operating_margin_change (-1.99 pp) exceeds gross_margin_change (-1.08 pp) by ~0.91 pp, and inventory is stable/declining, the gap reflects SG&A deleverage rather than inventory charges, consistent with lesson 3's diagnostic pattern."
+    },
+    {
+      "id": "H5",
+      "driver": "Fulfillment and freight cost-structure shifts disproportionately impacting BBY's model",
+      "how_to_test": "From price_index, pull truckload_freight and warehousing series for 2022 observation dates. Per lessons 1-2, treat these PPI index changes as complementary cost-pressure evidence\u2014not as direct proxy for filing-based gross margin points. Compare index trajectory to peers' gross_margin_change: if freight/warehousing surged but peers' margins held better, BBY's digital/fulfillment cost structure may be the differentiator."
+    },
+    {
+      "id": "H6",
+      "driver": "Peer-median decomposition to determine sector vs. company-specific dominance",
+      "how_to_test": "Compute all peers' gross_margin_change for FY ending within ~7 months of BBY's 2023-01-28. Identify whether BBY's -1.08 pp decline falls within the interquartile range of peers. Lesson 4 states: 'company-specific cost-structure shifts (freight, labor, markdowns, digital fulfillment) routinely dominate sector-wide inflation effects on gross margin.' If BBY is within peer IQR, sector is contributing factor; if BBY is outside (especially below median), company-specific drivers are primary per established retail-trade pattern."
+    }
+  ]
+}

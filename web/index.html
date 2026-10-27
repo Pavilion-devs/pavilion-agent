@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Causeway</title>
+<style>
+:root {
+  --bg: #f6f5f1; --panel: #ffffff; --ink: #1c1d21; --muted: #6b6d75; --line: #e3e1da;
+  --accent: #2f5bd3; --accent-soft: #e6ecfb; --ok: #1f7a4d; --ok-soft: #e3f3ea; --bad: #b3361f; --bad-soft: #fbe9e5;
+  --warn: #9a6a00; --warn-soft: #fbf1d9; --code: #f1efe8; --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121316; --panel: #1b1c20; --ink: #ececef; --muted: #9a9ca5; --line: #2c2e34;
+    --accent: #7d9cf0; --accent-soft: #1f2840; --ok: #5fc493; --ok-soft: #15291f; --bad: #f08a75; --bad-soft: #351a15;
+    --warn: #e2b54f; --warn-soft: #2f2611; --code: #23252b;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121316; --panel: #1b1c20; --ink: #ececef; --muted: #9a9ca5; --line: #2c2e34;
+  --accent: #7d9cf0; --accent-soft: #1f2840; --ok: #5fc493; --ok-soft: #15291f; --bad: #f08a75; --bad-soft: #351a15;
+  --warn: #e2b54f; --warn-soft: #2f2611; --code: #23252b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; }
+header { padding: 18px 24px 14px; border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; z-index: 5; }
+.brand { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.brand h1 { margin: 0; font-size: 22px; letter-spacing: -0.02em; }
+.brand .tag { color: var(--muted); font-size: 14px; }
+.replay-badge { font-size: 12px; color: var(--warn); background: var(--warn-soft); padding: 2px 8px; border-radius: 99px; }
+.controls { display: flex; gap: 10px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+.runs button, .controls > button, .tabs button { font: inherit; border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+.runs button.on, .tabs button.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+#play { background: var(--accent); border-color: var(--accent); color: #fff; min-width: 92px; }
+.question { margin-top: 12px; font-size: 18px; font-weight: 600; }
+.progress { height: 3px; background: var(--line); margin-top: 12px; border-radius: 3px; overflow: hidden; }
+.progress div { height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+main { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px; padding: 16px 24px 40px; }
+.col { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; min-height: 60vh; }
+.col h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+#timeline { list-style: none; margin: 0; padding: 8px 0; max-height: calc(100vh - 230px); overflow-y: auto; }
+#timeline li { padding: 8px 16px; border-left: 3px solid transparent; animation: in .35s ease; }
+#timeline li.call { padding: 2px 16px 2px 32px; color: var(--muted); font-size: 12.5px; font-family: var(--mono); }
+#timeline li.key { border-left-color: var(--accent); }
+#timeline li.good { border-left-color: var(--ok); }
+#timeline li.badl { border-left-color: var(--bad); }
+@keyframes in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.who { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-right: 6px; }
+.t { float: right; color: var(--muted); font-size: 12px; font-family: var(--mono); }
+.chip { font-family: var(--mono); font-size: 12px; background: var(--accent-soft); color: var(--accent); border: 0; padding: 1px 6px; border-radius: 5px; cursor: pointer; }
+.pill { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 99px; margin: 2px 4px 2px 0; }
+.pill.ok { background: var(--ok-soft); color: var(--ok); } .pill.bad { background: var(--bad-soft); color: var(--bad); }
+.tabs { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.pane { padding: 16px; max-height: calc(100vh - 230px); overflow-y: auto; }
+.card { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+.card.ok { border-left: 4px solid var(--ok); } .card.bad { border-left: 4px solid var(--bad); }
+.card .reason { color: var(--bad); font-size: 13.5px; margin-top: 6px; }
+.card .fix { font-size: 13.5px; margin-top: 6px; color: var(--muted); }
+.card .fix b { color: var(--ink); }
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.stat { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.stat .n { font-size: 22px; font-weight: 700; } .stat .l { font-size: 12.5px; color: var(--muted); }
+.memo h1, .memo h2, .memo h3 { font-size: 16px; margin: 18px 0 6px; }
+.memo table, .rows { border-collapse: collapse; font-size: 13px; margin: 8px 0; }
+.memo td, .memo th, .rows td, .rows th { border: 1px solid var(--line); padding: 4px 8px; text-align: left; }
+.rows { font-family: var(--mono); font-size: 12px; }
+pre { background: var(--code); padding: 10px 12px; border-radius: 8px; overflow-x: auto; font-size: 12.5px; white-space: pre-wrap; }
+.muted { color: var(--muted); } .small { font-size: 13px; }
+#drawer { position: fixed; right: 0; top: 0; bottom: 0; width: min(640px, 100%); background: var(--panel); border-left: 1px solid var(--line); box-shadow: -10px 0 30px rgba(0,0,0,.15); transform: translateX(105%); transition: transform .25s; z-index: 10; overflow-y: auto; padding: 18px; }
+#drawer.open { transform: none; }
+#drawer .close { float: right; }
+.bar { height: 8px; border-radius: 4px; background: var(--accent); display: inline-block; vertical-align: middle; }
+@media (max-width: 860px) { main { grid-template-columns: 1fr; padding: 12px 16px; } header { padding: 14px 16px; position: static; } #timeline, .pane { max-height: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <h1>Causeway</h1>
+    <span class="tag">Explains why a company's numbers moved, company-specific vs sector-wide, with every number checked.</span>
+    <span class="replay-badge">Replay of a recorded run · real logs</span>
+  </div>
+  <div class="controls">
+    <div class="runs" id="runs"></div>
+    <button id="play">▶ Play</button>
+    <button id="skip">Show all</button>
+    <label class="small muted">Speed <select id="speed"><option value="900">1×</option><option value="450" selected>2×</option><option value="180">5×</option></select></label>
+  </div>
+  <div class="question" id="question"></div>
+  <div class="progress"><div id="prog"></div></div>
+</header>
+<main>
+  <section class="col">
+    <h2>Agent timeline</h2>
+    <ol id="timeline"></ol>
+  </section>
+  <section class="col">
+    <div class="tabs" id="tabs"></div>
+    <div class="pane" id="pane"></div>
+  </section>
+</main>
+<aside id="drawer"></aside>
+<script src="replay_data.js"></script>
+<script>
+const D = window.CAUSEWAY;
+const LABELS = ["Target (first run)", "Best Buy (with memory)"];
+const TABS = ["Plan", "Critic", "Memo", "Memory", "Evidence", "Sponsor tech"];
+let run = D.runs[0], idx = 0, timer = null, tab = "Plan", shown = new Set();
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const short = m => (m || "").replace("nvidia/", "").replace("-550b-a55b", "").replace("-30b-a3b", "");
+const fmtT = t => { const m = Math.floor(t / 60), s = Math.floor(t % 60); return `${m}:${String(s).padStart(2, "0")}`; };
+const chips = text => esc(text).replace(/\bq_[0-9a-f]{10}\b/g, q => `<button class="chip" data-q="${q}">${q}</button>`);
+
+function md(src) {
+  const lines = src.split("\n"); let out = "", inList = false, table = [];
+  const inline = s => chips(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  const flushTable = () => { if (!table.length) return; const rows = table.filter(r => !/^\|[\s:-]+\|/.test(r));
+    out += "<table>" + rows.map((r, i) => "<tr>" + r.split("|").slice(1, -1).map(c => i ? `<td>${inline(c.trim())}</td>` : `<th>${inline(c.trim())}</th>`).join("") + "</tr>").join("") + "</table>"; table = []; };
+  for (const l of lines) {
+    if (l.trim().startsWith("|")) { table.push(l.trim()); continue; } else flushTable();
+    if (/^\s*[-*] /.test(l)) { if (!inList) { out += "<ul>"; inList = true; } out += `<li>${inline(l.replace(/^\s*[-*] /, ""))}</li>`; continue; }
+    if (inList) { out += "</ul>"; inList = false; }
+    const h = l.match(/^(#{1,4})\s+(.*)/);
+    if (h) out += `<h3>${inline(h[2])}</h3>`; else if (l.trim()) out += `<p>${inline(l)}</p>`;
+  }
+  flushTable(); if (inList) out += "</ul>"; return out;
+}
+
+function eventHtml(e) {
+  const t = `<span class="t">${fmtT(e.t)}</span>`;
+  switch (e.event) {
+    case "start": return ["key", `${t}<span class="who">Analyst</span>${esc(e.question)}`];
+    case "retrieve": { const m = e.memories || []; return [m.length ? "good" : "", `${t}<span class="who">H-MEM</span>${m.length ? `Recalled <b>${m.length}</b> lessons from earlier investigations` : "No lessons in memory yet: first investigation in this sector"}`]; }
+    case "model_call": return ["call", `↳ ${esc(e.agent)} on ${esc(short(e.model))} · ${(e.latency_ms / 1000).toFixed(1)} s · ${esc(e.receipt || "")}${e.cached ? " · cached" : ""}`];
+    case "fallback": return ["call", `↳ ${esc(e.agent)}: ${esc(short(e.frm))} hung, switched to ${esc(short(e.model))}`];
+    case "plan": return ["key", `${t}<span class="who">Planner</span>Plan: ${esc(e.plan.company)} ${esc(e.plan.metric)}, ${esc(e.plan.focus_period)} vs peers ${esc((e.plan.peers || []).join(", "))}; ${(e.plan.hypotheses || []).length} hypotheses`];
+    case "query": return ["", `${t}<span class="who">Investigator · Zetaris</span>${esc(e.purpose)} → <button class="chip" data-q="${e.query_id}">${e.query_id}</button> <span class="muted small">${e.rows} rows</span>`];
+    case "findings": return ["key", `${t}<span class="who">Investigator</span>Proposes ${(e.findings || []).length} findings`];
+    case "recompute": { const p = Object.keys(e.automated_problems || {}); return ["", `${t}<span class="who">Critic · Zetaris</span>Re-ran <b>${e.requeried}</b> cited queries: ${e.reproduced} reproduced exactly. ${p.length ? `Numbers not found in the results: ${p.join(", ")}` : "Every number traced to a result."}`]; }
+    case "verdict": return [e.rejected.length ? "badl" : "good", `${t}<span class="who">Critic · round ${e.round}</span>${e.approved.map(i => `<span class="pill ok">${i} approved</span>`).join("")}${e.rejected.map(r => `<span class="pill bad">${r.id} rejected</span>`).join("")}`];
+    case "memo": return ["good", `${t}<span class="who">Reporter</span>Memo written from approved findings only`];
+    case "learn": return ["good", `${t}<span class="who">H-MEM</span>Learned <b>${(e.learned || []).length}</b> lessons (from Critic rejections and approved findings)`];
+    case "done": return ["key", `${t}<span class="who">Done</span>${e.rounds} Critic rounds · ${fmtT(e.elapsed_s)} wall clock`];
+  }
+  return null;
+}
+const AUTO_TAB = {plan: "Plan", verdict: "Critic", memo: "Memo", learn: "Memory", retrieve: "Memory"};
+
+function step() {
+  const evs = run.events;
+  while (idx < evs.length) {
+    const e = evs[idx++]; const h = eventHtml(e); if (!h) continue;
+    const li = document.createElement("li"); li.className = h[0]; li.innerHTML = h[1];
+    $("#timeline").appendChild(li); li.scrollIntoView({block: "nearest"});
+    shown.add(e.event + ":" + (e.round || ""));
+    if (AUTO_TAB[e.event] && timer) { if (e.event !== "retrieve" || (e.memories || []).length) setTab(AUTO_TAB[e.event]); }
+    else if (tab !== "Sponsor tech") renderPane();
+    $("#prog").style.width = (100 * idx / evs.length) + "%";
+    return h[0] !== "call";
+  }
+  stop(); return false;
+}
+function tick() { if (idx >= run.events.length) return stop(); step(); timer = setTimeout(tick, run.events[idx - 1] && run.events[idx - 1].event === "model_call" ? +$("#speed").value / 3 : +$("#speed").value); }
+function play() { if (idx >= run.events.length) reset(); $("#play").textContent = "❚❚ Pause"; timer = setTimeout(tick, 100); }
+function stop() { clearTimeout(timer); timer = null; $("#play").textContent = idx >= run.events.length ? "↺ Replay" : "▶ Play"; }
+function reset() { stop(); idx = 0; shown = new Set(); $("#timeline").innerHTML = ""; $("#prog").style.width = 0; setTab("Plan"); }
+function skipAll() { stop(); while (idx < run.events.length) step(); stop(); renderPane(); }
+
+function setTab(t) { tab = t; document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.t === t)); renderPane(); }
+function reached(ev) { return [...shown].some(s => s.startsWith(ev + ":")); }
+
+function renderPane() {
+  const p = $("#pane"); const P = run.plan;
+  const wait = what => `<p class="muted">${what} appears when the replay reaches it. Press Play, or Show all.</p>`;
+  if (tab === "Plan") {
+    if (!reached("plan")) return p.innerHTML = wait("The plan");
+    p.innerHTML = `<div class="stat-row"><div class="stat"><div class="n">${esc(P.ticker)}</div><div class="l">${esc(P.metric)}, ${esc(P.focus_period)}</div></div>
+      <div class="stat"><div class="n">${(P.peers || []).length}</div><div class="l">peers: ${esc((P.peers || []).join(", "))}</div></div>
+      <div class="stat"><div class="n">${(P.excluded_peers || []).length}</div><div class="l">excluded with a documented reason</div></div></div>
+      ${(P.excluded_peers || []).map(x => `<div class="card"><b>${esc(x.ticker)} excluded:</b> ${esc(x.reason)}</div>`).join("")}
+      <h3>Hypotheses to test: sector-wide and company-specific</h3>
+      ${(P.hypotheses || []).map(h => `<div class="card"><b>${esc(h.id)}</b> ${esc(h.driver)}<div class="muted small">${esc(h.how_to_test)}</div></div>`).join("")}`;
+  } else if (tab === "Critic") {
+    const rounds = run.rounds.filter(r => reached("verdict") && shown.has("verdict:" + r.round));
+    if (!rounds.length) return p.innerHTML = wait("The Critic's verdicts");
+    p.innerHTML = `<p class="small muted">A finding is approved only if every cited query re-runs in Zetaris with identical rows, every number traces to those rows, and a Nemotron Ultra review passes a methodology checklist. Rejected findings go back to the Investigator with the fix.</p>` +
+      rounds.map(r => `<h3>Round ${r.round}: ${r.critic.approved.length} approved, ${r.critic.rejected.length} rejected</h3>` +
+        [...r.critic.rejected.map(f => [f, false]), ...r.critic.approved.map(f => [f, true])].map(([f, ok]) => `<div class="card ${ok ? "ok" : "bad"}">
+          <span class="pill ${ok ? "ok" : "bad"}">${esc(f.id)} ${ok ? "approved" : "rejected"}</span> ${chips(f.statement)}
+          <div class="small muted">evidence: ${(f.evidence || []).map(q => `<button class="chip" data-q="${q}">${q}</button>`).join(" ")}</div>
+          ${ok ? "" : (f.critic.reasons || []).map(x => `<div class="reason">✗ ${esc(x)}</div>`).join("") + (f.critic.fix ? `<div class="fix"><b>Fix:</b> ${esc(f.critic.fix)}</div>` : "")}
+        </div>`).join("")).reverse().join("");
+  } else if (tab === "Memo") {
+    if (!reached("memo")) return p.innerHTML = wait("The memo");
+    p.innerHTML = `<p class="small muted">Click any query id to see the SQL Zetaris ran and the rows behind the number.</p><div class="memo">${md(run.memo)}</div>`;
+  } else if (tab === "Memory") {
+    const rec = run.memory.recalled, learned = run.memory.learned;
+    let h = `<h3>Recalled before planning (H-MEM hybrid score ≥ ${rec.trace.threshold})</h3>`;
+    h += rec.memories.length ? rec.memories.map(m => `<div class="card ok"><span class="bar" style="width:${Math.round(m.score * 120)}px"></span> <b>${m.score}</b> · ${esc(m.layer)}<div>${esc(m.content)}</div></div>`).join("")
+      : `<p class="muted">Nothing yet: this is the first investigation in the sector.</p>`;
+    h += `<h3>Learned after this run</h3>` + (reached("learn") ? learned.map(m => `<div class="card"><span class="pill ${m.event === "user_correction" ? "bad" : "ok"}">${m.event === "user_correction" ? "from a Critic rejection" : "from an approved finding"}</span><div>${esc(m.content)}</div></div>`).join("") : wait("What it learned"));
+    p.innerHTML = h;
+  } else if (tab === "Evidence") {
+    const qs = Object.values(run.queries).filter(q => q.agent === "investigator");
+    p.innerHTML = `<p class="small muted">Every query the Investigator ran against the Zetaris semantic layer. The Critic re-ran each cited one ${run.stats.recomputes} times in total.</p>` +
+      qs.map(q => `<div class="card"><button class="chip" data-q="${q.id}">${q.id}</button> ${esc(q.purpose)} <span class="muted small">· ${q.row_count} rows · ${q.elapsed_ms} ms</span></div>`).join("");
+  } else if (tab === "Sponsor tech") {
+    const s = run.stats;
+    p.innerHTML = `<div class="stat-row">
+      <div class="stat"><div class="n">${s.queries}</div><div class="l">Zetaris queries by the agent</div></div>
+      <div class="stat"><div class="n">${s.recomputes}</div><div class="l">Critic re-executions in Zetaris</div></div>
+      <div class="stat"><div class="n">${s.receipts}</div><div class="l">Nightshift calls, each with a compute receipt</div></div>
+      <div class="stat"><div class="n">${run.world.facts ?? "-"}</div><div class="l">facts in the World Model</div></div></div>
+      <h3>NVIDIA Nemotron through Meterless Nightshift</h3>
+      ${Object.entries(s.by_model).map(([m, n]) => `<div class="card"><b>${esc(m)}</b>: ${n} calls<div class="muted small">${m.includes("lightning") ? "Planner (fast, thinking off); fallback when Ultra hangs" : "Investigator, Critic, Reporter, H-MEM miner"}</div></div>`).join("")}
+      <h3>Zetaris data-quality rules on the USL (RUN DQ: 0 invalid records)</h3>
+      ${D.dq.map(r => `<div class="card"><b>${esc(r.name)}</b> <span class="muted small">on ${esc(r.table)}</span><div class="small">${esc(r.why)}</div><pre>${esc(r.rule)}</pre></div>`).join("")}
+      <h3>Meterless engines</h3>
+      <div class="card"><b>World Model</b>: append-only event log, stable hash IDs, ingest pipeline that turns every Zetaris result into facts with provenance. The Critic grounds every quoted number in these facts.</div>
+      <div class="card"><b>H-MEM</b>: tiered memory with the hybrid retrieval score, trust ledger and feedback. Critic rejections become lessons the next investigation recalls.</div>`;
+  }
+}
+
+function openQuery(id) {
+  const q = run.queries[id]; if (!q) return;
+  $("#drawer").innerHTML = `<button class="close" onclick="document.querySelector('#drawer').classList.remove('open')">Close</button>
+    <h3>${esc(id)}</h3><p>${esc(q.purpose)}</p><p class="muted small">${esc(q.agent)} · ${q.row_count} rows · ${q.elapsed_ms} ms in Zetaris</p>
+    <pre>${esc(q.sql)}</pre>${q.error ? `<p class="reason">${esc(q.error)}</p>` : ""}
+    <div style="overflow-x:auto"><table class="rows"><tr>${q.columns.map(c => `<th>${esc(c)}</th>`).join("")}</tr>
+    ${q.rows.map(r => `<tr>${r.map(v => `<td>${esc(typeof v === "number" && !Number.isInteger(v) ? +v.toFixed(6) : v)}</td>`).join("")}</tr>`).join("")}</table></div>
+    ${q.row_count > q.rows.length ? `<p class="muted small">First ${q.rows.length} of ${q.row_count} rows.</p>` : ""}`;
+  $("#drawer").classList.add("open");
+}
+
+function selectRun(i) {
+  run = D.runs[i]; document.querySelectorAll("#runs button").forEach((b, j) => b.classList.toggle("on", j === i));
+  $("#question").textContent = run.question; reset();
+}
+
+$("#runs").innerHTML = D.runs.map((r, i) => `<button data-i="${i}">${LABELS[i] || r.id}</button>`).join("");
+$("#tabs").innerHTML = TABS.map(t => `<button data-t="${t}">${t}</button>`).join("");
+$("#runs").onclick = e => e.target.dataset.i && selectRun(+e.target.dataset.i);
+$("#tabs").onclick = e => e.target.dataset.t && setTab(e.target.dataset.t);
+$("#play").onclick = () => timer ? stop() : play();
+$("#skip").onclick = skipAll;
+document.addEventListener("click", e => { if (e.target.dataset && e.target.dataset.q) openQuery(e.target.dataset.q); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") $("#drawer").classList.remove("open"); });
+selectRun(0);
+</script>
+</body>
+</html>

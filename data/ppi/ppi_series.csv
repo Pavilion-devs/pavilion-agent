@@ -1,0 +1,631 @@
+series_id,series_name,description,story_role,observation_date,value
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-01-01,116.8
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-02-01,103.9
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-03-01,104.9
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-04-01,110.7
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-05-01,104.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-06-01,102.9
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-07-01,110.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-08-01,96.9
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-09-01,97.7
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-10-01,108.7
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-11-01,95.1
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2018-12-01,97.8
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-01-01,112.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-02-01,106.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-03-01,102.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-04-01,111.5
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-05-01,102.1
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-06-01,99.6
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-07-01,104.6
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-08-01,97.8
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-09-01,102.8
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-10-01,110.7
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-11-01,99.4
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2019-12-01,96.8
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-01-01,112.6
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-02-01,111.4
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-03-01,106.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-04-01,112.3
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-05-01,107.9
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-06-01,100.3
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-07-01,101.6
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-08-01,95.6
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-09-01,96.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-10-01,101.5
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-11-01,101.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2020-12-01,101.0
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-01-01,115.4
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-02-01,110.9
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-03-01,113.9
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-04-01,114.6
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-05-01,119.4
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-06-01,113.6
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-07-01,119.637
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-08-01,113.269
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-09-01,114.492
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-10-01,118.49
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-11-01,117.779
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2021-12-01,116.941
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-01-01,120.953
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-02-01,124.656
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-03-01,120.618
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-04-01,119.921
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-05-01,126.418
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-06-01,115.236
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-07-01,110.476
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-08-01,109.056
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-09-01,113.553
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-10-01,122.552
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-11-01,118.8
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2022-12-01,121.078
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-01-01,124.466
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-02-01,123.79
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-03-01,138.644
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-04-01,132.403
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-05-01,137.272
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-06-01,132.412
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-07-01,129.435
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-08-01,127.25
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-09-01,133.215
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-10-01,130.36
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-11-01,122.927
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2023-12-01,129.238
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-01-01,145.933
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-02-01,145.453
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-03-01,144.002
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-04-01,138.722
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-05-01,143.039
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-06-01,141.789
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-07-01,137.124
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-08-01,131.117
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-09-01,136.728
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-10-01,136.785
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-11-01,122.59
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2024-12-01,128.38
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-01-01,146.562
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-02-01,136.614
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-03-01,126.708
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-04-01,139.32
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-05-01,141.156
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-06-01,140.365
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-07-01,136.067
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-08-01,137.359
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-09-01,142.553
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-10-01,145.075
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-11-01,127.226
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2025-12-01,132.66
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-01-01,152.171
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-02-01,138.894
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-03-01,129.902
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-04-01,140.214
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-05-01,154.166
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-06-01,141.711
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-07-01,138.536
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-08-01,134.929
+PCU455110455110,dept_store_margins,PPI: Department stores (retail margins),general merchandise retail margins,2026-09-01,142.605
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-01-01,195.0
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-02-01,199.8
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-03-01,199.9
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-04-01,197.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-05-01,202.4
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-06-01,201.5
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-07-01,199.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-08-01,202.0
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-09-01,199.5
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-10-01,207.4
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-11-01,201.5
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2018-12-01,198.3
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-01-01,198.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-02-01,204.5
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-03-01,206.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-04-01,205.5
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-05-01,204.3
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-06-01,204.7
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-07-01,202.7
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-08-01,203.4
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-09-01,205.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-10-01,205.7
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-11-01,206.5
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2019-12-01,205.0
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-01-01,209.4
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-02-01,213.1
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-03-01,217.3
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-04-01,219.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-05-01,215.1
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-06-01,208.9
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-07-01,214.5
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-08-01,216.1
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-09-01,208.9
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-10-01,213.8
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-11-01,211.9
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2020-12-01,208.8
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-01-01,213.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-02-01,213.1
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-03-01,213.9
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-04-01,216.7
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-05-01,211.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-06-01,211.4
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-07-01,210.333
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-08-01,216.455
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-09-01,217.862
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-10-01,220.918
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-11-01,220.922
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2021-12-01,222.52
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-01-01,230.005
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-02-01,228.134
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-03-01,231.112
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-04-01,234.689
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-05-01,238.946
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-06-01,247.067
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-07-01,242.505
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-08-01,247.153
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-09-01,251.248
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-10-01,262.53
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-11-01,259.741
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2022-12-01,255.255
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-01-01,261.25
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-02-01,263.912
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-03-01,267.35
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-04-01,267.356
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-05-01,267.525
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-06-01,271.036
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-07-01,266.79
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-08-01,272.667
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-09-01,273.579
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-10-01,273.994
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-11-01,273.022
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2023-12-01,269.781
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-01-01,277.428
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-02-01,274.412
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-03-01,279.014
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-04-01,278.678
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-05-01,282.273
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-06-01,281.629
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-07-01,275.162
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-08-01,273.987
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-09-01,275.649
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-10-01,278.592
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-11-01,278.045
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2024-12-01,276.134
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-01-01,291.471
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-02-01,293.097
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-03-01,285.2
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-04-01,291.601
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-05-01,289.379
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-06-01,287.26
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-07-01,284.672
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-08-01,285.034
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-09-01,288.804
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-10-01,283.965
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-11-01,284.451
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2025-12-01,288.24
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-01-01,294.772
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-02-01,296.899
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-03-01,301.031
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-04-01,299.373
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-05-01,300.928
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-06-01,301.379
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-07-01,299.56
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-08-01,298.942
+PCU445110445110,grocery_margins,PPI: Supermarkets and grocery retailers (retail margins),grocery retail margins,2026-09-01,303.069
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-01-01,89.4
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-02-01,90.1
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-03-01,92.9
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-04-01,95.5
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-05-01,95.8
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-06-01,97.0
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-07-01,97.9
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-08-01,96.6
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-09-01,96.2
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-10-01,98.4
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-11-01,84.2
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2018-12-01,93.4
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-01-01,89.6
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-02-01,90.1
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-03-01,89.4
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-04-01,89.3
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-05-01,89.8
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-06-01,90.0
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-07-01,89.8
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-08-01,89.9
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-09-01,93.3
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-10-01,95.5
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-11-01,85.7
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2019-12-01,87.5
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-01-01,90.1
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-02-01,90.5
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-03-01,93.9
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-04-01,91.8
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-05-01,95.2
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-06-01,102.2
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-07-01,104.6
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-08-01,104.2
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-09-01,105.6
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-10-01,101.3
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-11-01,91.2
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2020-12-01,93.3
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-01-01,99.2
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-02-01,101.8
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-03-01,104.9
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-04-01,105.1
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-05-01,106.5
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-06-01,109.9
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-07-01,115.225
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-08-01,114.988
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-09-01,106.832
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-10-01,98.412
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-11-01,90.074
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2021-12-01,90.439
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-01-01,94.757
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-02-01,96.346
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-03-01,97.919
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-04-01,97.821
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-05-01,91.058
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-06-01,108.135
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-07-01,102.779
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-08-01,102.704
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-09-01,99.803
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-10-01,99.359
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-11-01,96.718
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2022-12-01,93.008
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-01-01,107.431
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-02-01,102.866
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-03-01,108.371
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-04-01,96.106
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-05-01,93.53
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-06-01,96.913
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-07-01,96.895
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-08-01,95.097
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-09-01,96.503
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-10-01,100.441
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-11-01,93.895
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2023-12-01,94.22
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-01-01,97.811
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-02-01,98.382
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-03-01,94.643
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-04-01,94.272
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-05-01,94.544
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-06-01,94.079
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-07-01,96.59
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-08-01,96.54
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-09-01,95.511
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-10-01,96.48
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-11-01,94.956
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2024-12-01,92.773
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-01-01,92.451
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-02-01,92.35
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-03-01,88.361
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-04-01,88.379
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-05-01,93.401
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-06-01,95.625
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-07-01,95.682
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-08-01,95.284
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-09-01,96.318
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-10-01,97.425
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-11-01,96.23
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2025-12-01,95.868
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-01-01,96.391
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-02-01,96.408
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-03-01,96.182
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-04-01,97.645
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-05-01,97.201
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-06-01,98.268
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-07-01,114.753
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-08-01,113.239
+PCU449210449210,electronics_margins,PPI: Electronics and appliance retailers (retail margins),electronics retail margins,2026-09-01,113.596
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-01-01,131.0
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-02-01,132.0
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-03-01,132.0
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-04-01,132.3
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-05-01,133.6
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-06-01,135.4
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-07-01,136.8
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-08-01,137.5
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-09-01,138.6
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-10-01,139.8
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-11-01,140.3
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2018-12-01,140.4
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-01-01,139.9
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-02-01,138.6
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-03-01,138.2
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-04-01,136.7
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-05-01,137.3
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-06-01,137.7
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-07-01,136.8
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-08-01,136.1
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-09-01,136.6
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-10-01,136.6
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-11-01,140.1
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2019-12-01,141.0
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-01-01,136.3
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-02-01,136.1
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-03-01,134.3
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-04-01,131.8
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-05-01,128.2
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-06-01,132.0
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-07-01,134.0
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-08-01,135.6
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-09-01,139.0
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-10-01,142.2
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-11-01,146.6
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2020-12-01,147.6
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-01-01,146.1
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-02-01,151.3
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-03-01,154.7
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-04-01,159.3
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-05-01,162.1
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-06-01,159.3
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-07-01,159.929
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-08-01,164.691
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-09-01,169.568
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-10-01,173.847
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-11-01,182.629
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2021-12-01,187.738
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-01-01,198.275
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-02-01,208.028
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-03-01,211.126
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-04-01,209.823
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-05-01,210.733
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-06-01,203.35
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-07-01,204.018
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-08-01,200.068
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-09-01,197.526
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-10-01,197.549
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-11-01,195.947
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2022-12-01,200.778
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-01-01,187.156
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-02-01,194.459
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-03-01,202.307
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-04-01,184.407
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-05-01,192.615
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-06-01,190.471
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-07-01,178.666
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-08-01,173.268
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-09-01,182.025
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-10-01,184.002
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-11-01,187.206
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2023-12-01,177.712
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-01-01,178.925
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-02-01,178.32
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-03-01,172.822
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-04-01,172.961
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-05-01,181.575
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-06-01,182.698
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-07-01,190.065
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-08-01,176.722
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-09-01,172.163
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-10-01,165.925
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-11-01,160.349
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2024-12-01,171.718
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-01-01,181.652
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-02-01,179.387
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-03-01,165.826
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-04-01,175.089
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-05-01,178.512
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-06-01,168.388
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-07-01,180.906
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-08-01,182.33
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-09-01,186.058
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-10-01,184.899
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-11-01,189.108
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2025-12-01,181.077
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-01-01,181.359
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-02-01,183.307
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-03-01,191.312
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-04-01,200.958
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-05-01,202.865
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-06-01,198.066
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-07-01,202.568
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-08-01,209.828
+PCU484121484121,truckload_freight,"PPI: General freight trucking, long-distance truckload",inbound freight cost,2026-09-01,219.384
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-01-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-02-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-03-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-04-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-05-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-06-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-07-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-08-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-09-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-10-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-11-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2018-12-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-01-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-02-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-03-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-04-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-05-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-06-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-07-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-08-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-09-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-10-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-11-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2019-12-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-01-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-02-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-03-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-04-01,109.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-05-01,109.2
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-06-01,106.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-07-01,106.8
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-08-01,108.1
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-09-01,111.2
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-10-01,111.7
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-11-01,112.3
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2020-12-01,110.5
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-01-01,111.4
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-02-01,112.0
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-03-01,112.3
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-04-01,115.1
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-05-01,113.7
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-06-01,112.7
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-07-01,113.623
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-08-01,117.951
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-09-01,119.613
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-10-01,123.609
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-11-01,120.505
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2021-12-01,124.514
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-01-01,135.008
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-02-01,128.995
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-03-01,127.831
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-04-01,137.18
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-05-01,125.739
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-06-01,131.922
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-07-01,138.763
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-08-01,129.782
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-09-01,140.594
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-10-01,140.691
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-11-01,139.988
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2022-12-01,142.826
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-01-01,149.322
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-02-01,155.61
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-03-01,155.248
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-04-01,155.102
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-05-01,148.924
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-06-01,146.229
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-07-01,148.066
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-08-01,146.543
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-09-01,150.389
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-10-01,150.088
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-11-01,149.44
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2023-12-01,149.108
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-01-01,150.344
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-02-01,155.065
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-03-01,157.813
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-04-01,161.487
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-05-01,159.691
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-06-01,157.123
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-07-01,158.571
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-08-01,156.677
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-09-01,156.988
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-10-01,157.863
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-11-01,161.444
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2024-12-01,161.839
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-01-01,167.142
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-02-01,169.62
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-03-01,170.556
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-04-01,170.009
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-05-01,163.081
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-06-01,159.668
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-07-01,160.03
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-08-01,160.236
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-09-01,159.905
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-10-01,161.698
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-11-01,161.896
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2025-12-01,164.88
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-01-01,170.917
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-02-01,172.704
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-03-01,175.415
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-04-01,178.706
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-05-01,169.441
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-06-01,167.544
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-07-01,167.463
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-08-01,165.628
+PCU493110493110,warehousing,PPI: General warehousing and storage,distribution cost,2026-09-01,166.867
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-01-01,113.7
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-02-01,114.1
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-03-01,114.6
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-04-01,114.8
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-05-01,114.9
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-06-01,115.3
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-07-01,115.5
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-08-01,115.5
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-09-01,115.5
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-10-01,116.5
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-11-01,116.4
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2018-12-01,116.4
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-01-01,116.6
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-02-01,116.9
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-03-01,117.2
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-04-01,117.7
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-05-01,117.7
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-06-01,117.8
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-07-01,118.0
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-08-01,118.2
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-09-01,117.8
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-10-01,118.4
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-11-01,117.8
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2019-12-01,117.9
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-01-01,118.5
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-02-01,118.3
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-03-01,118.5
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-04-01,118.1
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-05-01,118.0
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-06-01,118.2
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-07-01,118.7
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-08-01,118.8
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-09-01,119.0
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-10-01,119.8
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-11-01,119.6
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2020-12-01,119.5
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-01-01,120.8
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-02-01,121.4
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-03-01,122.1
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-04-01,123.5
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-05-01,124.3
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-06-01,125.1
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-07-01,126.29
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-08-01,127.19
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-09-01,127.354
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-10-01,128.18
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-11-01,129.175
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2021-12-01,129.843
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-01-01,131.197
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-02-01,132.152
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-03-01,133.956
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-04-01,134.562
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-05-01,135.015
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-06-01,135.479
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-07-01,135.894
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-08-01,136.366
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-09-01,136.488
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-10-01,137.066
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-11-01,137.251
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2022-12-01,137.26
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-01-01,137.786
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-02-01,138.265
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-03-01,138.434
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-04-01,138.752
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-05-01,138.782
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-06-01,138.92
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-07-01,139.605
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-08-01,139.787
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-09-01,139.668
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-10-01,140.026
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-11-01,139.916
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2023-12-01,139.721
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-01-01,140.6
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-02-01,141.223
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-03-01,141.588
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-04-01,142.271
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-05-01,142.532
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-06-01,143.464
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-07-01,143.202
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-08-01,143.741
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-09-01,144.243
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-10-01,145.045
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-11-01,144.617
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2024-12-01,144.96
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-01-01,146.119
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-02-01,146.494
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-03-01,146.952
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-04-01,146.633
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-05-01,147.094
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-06-01,147.312
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-07-01,148.282
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-08-01,147.912
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-09-01,148.542
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-10-01,149.356
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-11-01,149.275
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2025-12-01,149.936
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-01-01,151.542
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-02-01,152.114
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-03-01,152.744
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-04-01,153.84
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-05-01,153.717
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-06-01,154.394
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-07-01,154.738
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-08-01,155.02
+PPICOR,core_final_demand,"PPI: Final demand less foods, energy and trade services",broad cost inflation,2026-09-01,155.924

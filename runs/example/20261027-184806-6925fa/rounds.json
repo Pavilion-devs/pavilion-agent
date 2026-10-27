@@ -1,0 +1,660 @@
+[
+  {
+    "round": 1,
+    "findings": [
+      {
+        "id": "F1",
+        "hypothesis": "H1",
+        "statement": "Target's gross margin fell 4.64 percentage points in fiscal 2022, which was dramatically worse than the peer median decline of ~0.85 pp (WMT -0.96, COST -0.74, DG -0.37, BBY -1.08 pp; DLTR improved +2.14 pp), indicating the margin compression was overwhelmingly company-specific rather than sector-wide.",
+        "numbers": {
+          "TGT_gross_margin_change_pps": -4.64,
+          "peer_median_gross_margin_change_pps": -0.85,
+          "TGT_vs_peer_median_gap_pps": -3.79
+        },
+        "evidence": [
+          "q_8dbe5afa2d"
+        ],
+        "confidence": "high",
+        "scope": "company-specific"
+      },
+      {
+        "id": "F2",
+        "hypothesis": "H3",
+        "statement": "Target's cost of sales grew 9.69% year-over-year in fiscal 2022 while revenue grew only 2.94%, a 6.75 percentage-point gap that drove the gross margin decline from 29.28% to 24.64%.",
+        "numbers": {
+          "FY2021_revenue_usd": 106005000000,
+          "FY2022_revenue_usd": 109120000000,
+          "revenue_growth_pct": 2.94,
+          "FY2021_cogs_usd": 74963000000,
+          "FY2022_cogs_usd": 82229000000,
+          "cogs_growth_pct": 9.69,
+          "cogs_revenue_growth_gap_pps": 6.75
+        },
+        "evidence": [
+          "q_3885db48a1",
+          "q_8dbe5afa2d"
+        ],
+        "confidence": "high",
+        "scope": "company-specific"
+      },
+      {
+        "id": "F3",
+        "hypothesis": "H2",
+        "statement": "BLS retail-margin PPIs (dept_store_margins and grocery_margins) both rose during fiscal 2022, meaning sector-wide retailers were earning MORE margin per unit sold, not less\u2014contradicting a sector-wide margin compression narrative and reinforcing that Target's decline was idiosyncratic.",
+        "numbers": {
+          "dept_store_margins_jan2021": 115,
+          "dept_store_margins_jan2023": 124,
+          "dept_store_margins_change_pct": 7.8,
+          "grocery_margins_jan2021": 213,
+          "grocery_margins_jan2023": 261,
+          "grocery_margins_change_pct": 22.5
+        },
+        "evidence": [
+          "q_c0eea54d6c",
+          "q_1a442f2493"
+        ],
+        "confidence": "high",
+        "scope": "sector-wide"
+      },
+      {
+        "id": "F4",
+        "hypothesis": "H5",
+        "statement": "Target's operating margin fell 4.91 pp vs gross margin's 4.64 pp decline (only 0.27 pp worse), and inventory decreased 2.9% while revenue rose 2.9%, indicating no significant shrinkage or inventory write-off signal beyond normal SG&A pressure.",
+        "numbers": {
+          "TGT_gross_margin_change_pps": -4.64,
+          "TGT_operating_margin_change_pps": -4.91,
+          "op_vs_gross_margin_gap_pps": -0.27,
+          "FY2021_inventory_usd": 13902000000,
+          "FY2022_inventory_usd": 13499000000,
+          "inventory_change_pct": -2.9
+        },
+        "evidence": [
+          "q_8dbe5afa2d",
+          "q_6c0655f923"
+        ],
+        "confidence": "high",
+        "scope": "company-specific"
+      },
+      {
+        "id": "F5",
+        "hypothesis": "H4",
+        "statement": "Financial_fact XBRL data for Target shows only aggregated revenue and cost_of_sales tags (RevenueFromContractWithCustomerExcludingAssessedTax, CostOfGoodsAndServicesSold) with no category-level gross profit breakdown available, preventing isolation of discretionary vs. essential category mix effects.",
+        "numbers": {
+          "category_breakdown_available": false
+        },
+        "evidence": [
+          "q_a9bcbb488d"
+        ],
+        "confidence": "medium",
+        "scope": "company-specific"
+      }
+    ],
+    "critic": {
+      "approved": [
+        {
+          "id": "F5",
+          "hypothesis": "H4",
+          "statement": "Financial_fact XBRL data for Target shows only aggregated revenue and cost_of_sales tags (RevenueFromContractWithCustomerExcludingAssessedTax, CostOfGoodsAndServicesSold) with no category-level gross profit breakdown available, preventing isolation of discretionary vs. essential category mix effects.",
+          "numbers": {
+            "category_breakdown_available": false
+          },
+          "evidence": [
+            "q_a9bcbb488d"
+          ],
+          "confidence": "medium",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "id": "F1",
+          "hypothesis": "H1",
+          "statement": "Target's gross margin fell 4.64 percentage points in fiscal 2022, which was dramatically worse than the peer median decline of ~0.85 pp (WMT -0.96, COST -0.74, DG -0.37, BBY -1.08 pp; DLTR improved +2.14 pp), indicating the margin compression was overwhelmingly company-specific rather than sector-wide.",
+          "numbers": {
+            "TGT_gross_margin_change_pps": -4.64,
+            "peer_median_gross_margin_change_pps": -0.85,
+            "TGT_vs_peer_median_gap_pps": -3.79
+          },
+          "evidence": [
+            "q_8dbe5afa2d"
+          ],
+          "confidence": "high",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "rejected",
+            "reasons": [
+              "The finding excludes DLTR from the peer median calculation because DLTR's gross margin improved (+2.14 pp), while the plan includes DLTR as a peer and the excluded_peers list only contains KR (for cost definition reasons). Excluding a peer because its result differs is cherry-picking per methodology checklist item 2. Including DLTR, the 5-peer median is -0.74 pp (sorted: -1.08, -0.96, -0.74, -0.37, +2.14), not -0.85 pp, and the company-specific gap becomes -3.90 pp."
+            ],
+            "fix": "Either include DLTR in the peer median (median = -0.74 pp, gap = -3.90 pp) or provide a documented comparability reason for excluding DLTR (different cost definition, restatement, or fiscal calendar) with evidence."
+          }
+        },
+        {
+          "id": "F2",
+          "hypothesis": "H3",
+          "statement": "Target's cost of sales grew 9.69% year-over-year in fiscal 2022 while revenue grew only 2.94%, a 6.75 percentage-point gap that drove the gross margin decline from 29.28% to 24.64%.",
+          "numbers": {
+            "FY2021_revenue_usd": 106005000000,
+            "FY2022_revenue_usd": 109120000000,
+            "revenue_growth_pct": 2.94,
+            "FY2021_cogs_usd": 74963000000,
+            "FY2022_cogs_usd": 82229000000,
+            "cogs_growth_pct": 9.69,
+            "cogs_revenue_growth_gap_pps": 6.75
+          },
+          "evidence": [
+            "q_3885db48a1",
+            "q_8dbe5afa2d"
+          ],
+          "confidence": "high",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "rejected",
+            "reasons": [
+              "number 'FY2021_revenue_usd' = 106005000000 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'FY2022_revenue_usd' = 109120000000 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'FY2021_cogs_usd' = 74963000000 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'FY2022_cogs_usd' = 82229000000 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'cogs_growth_pct' = 9.69 is not in the cited query results (nor a percentage, difference or median of them)"
+            ],
+            "fix": ""
+          }
+        },
+        {
+          "id": "F3",
+          "hypothesis": "H2",
+          "statement": "BLS retail-margin PPIs (dept_store_margins and grocery_margins) both rose during fiscal 2022, meaning sector-wide retailers were earning MORE margin per unit sold, not less\u2014contradicting a sector-wide margin compression narrative and reinforcing that Target's decline was idiosyncratic.",
+          "numbers": {
+            "dept_store_margins_jan2021": 115,
+            "dept_store_margins_jan2023": 124,
+            "dept_store_margins_change_pct": 7.8,
+            "grocery_margins_jan2021": 213,
+            "grocery_margins_jan2023": 261,
+            "grocery_margins_change_pct": 22.5
+          },
+          "evidence": [
+            "q_c0eea54d6c",
+            "q_1a442f2493"
+          ],
+          "confidence": "high",
+          "scope": "sector-wide",
+          "critic": {
+            "verdict": "rejected",
+            "reasons": [
+              "Violates methodology checklist item 3: Retail-margin PPIs measure margin per unit sold in index points, not percentage points of gross margin. The finding interprets PPI index increases as 'retailers were earning MORE margin per unit sold' and uses this to 'contradict a sector-wide margin compression narrative,' but gross margin percentage and PPI margin-per-unit indices are different metrics that can move in opposite directions. The peer median from edgar.margin_change showed -0.85 pp gross margin decline for the peer group.",
+              "Uses causal language ('contradicting', 'reinforcing') without direct evidence linking PPI index changes to gross margin outcomes, violating checklist item 5. Such claims must be phrased as 'consistent with' and carry low/medium confidence."
+            ],
+            "fix": "Rephrase to: 'BLS retail-margin PPIs (dept_store_margins and grocery_margins) rose from Jan 2021 to Jan 2023 (dept_store +7.8%, grocery +22.5% in index points). These indices measure retailers' margin per unit sold in index points, not gross margin percentage points. The PPI increase is consistent with stable or rising dollar margins per unit, but does not directly contradict the peer median gross margin decline of -0.85 pp observed in SEC filings, as the metrics differ. Target's -4.64 pp decline remains larger than peers.' Confidence: medium."
+          }
+        },
+        {
+          "id": "F4",
+          "hypothesis": "H5",
+          "statement": "Target's operating margin fell 4.91 pp vs gross margin's 4.64 pp decline (only 0.27 pp worse), and inventory decreased 2.9% while revenue rose 2.9%, indicating no significant shrinkage or inventory write-off signal beyond normal SG&A pressure.",
+          "numbers": {
+            "TGT_gross_margin_change_pps": -4.64,
+            "TGT_operating_margin_change_pps": -4.91,
+            "op_vs_gross_margin_gap_pps": -0.27,
+            "FY2021_inventory_usd": 13902000000,
+            "FY2022_inventory_usd": 13499000000,
+            "inventory_change_pct": -2.9
+          },
+          "evidence": [
+            "q_8dbe5afa2d",
+            "q_6c0655f923"
+          ],
+          "confidence": "high",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "rejected",
+            "reasons": [
+              "The finding uses year-end inventory balances (annual_financials.inventory) to claim 'no significant shrinkage or inventory write-off signal,' violating checklist item 4: year-end balances cannot rule out intra-year effects (inventory could have built up and been written down during the year).",
+              "The finding makes a causal claim ('indicating no significant shrinkage...') without direct evidence (quarterly data required), and assigns 'high' confidence, violating checklist item 5: causal words need direct evidence; otherwise must be phrased as 'consistent with' with low/medium confidence."
+            ],
+            "fix": "Rewrite using only year-end data: 'Target's operating margin fell 4.91 pp vs gross margin's 4.64 pp decline (0.27 pp gap), and year-end inventory fell 2.9% while revenue rose 2.9%. This is consistent with SG&A pressure rather than inventory write-offs, but quarterly data would be needed to rule out intra-year inventory effects.' Confidence: medium."
+          }
+        }
+      ],
+      "feedback": "F1: Either include DLTR in the peer median (median = -0.74 pp, gap = -3.90 pp) or provide a documented comparability reason for excluding DLTR (different cost definition, restatement, or fiscal calendar) with evidence. F2: number 'FY2021_revenue_usd' = 106005000000 is not in the cited query results (nor a percentage, difference or median of them); number 'FY2022_revenue_usd' = 109120000000 is not in the cited query results (nor a percentage, difference or median of them); number 'FY2021_cogs_usd' = 74963000000 is not in the cited query results (nor a percentage, difference or median of them); number 'FY2022_cogs_usd' = 82229000000 is not in the cited query results (nor a percentage, difference or median of them); number 'cogs_growth_pct' = 9.69 is not in the cited query results (nor a percentage, difference or median of them) F3: Rephrase to: 'BLS retail-margin PPIs (dept_store_margins and grocery_margins) rose from Jan 2021 to Jan 2023 (dept_store +7.8%, grocery +22.5% in index points). These indices measure retailers' margin per unit sold in index points, not gross margin percentage points. The PPI increase is consistent with stable or rising dollar margins per unit, but does not directly contradict the peer median gross margin decline of -0.85 pp observed in SEC filings, as the metrics differ. Target's -4.64 pp decline remains larger than peers.' Confidence: medium. F4: Rewrite using only year-end data: 'Target's operating margin fell 4.91 pp vs gross margin's 4.64 pp decline (0.27 pp gap), and year-end inventory fell 2.9% while revenue rose 2.9%. This is consistent with SG&A pressure rather than inventory write-offs, but quarterly data would be needed to rule out intra-year inventory effects.' Confidence: medium.",
+      "recomputed": {
+        "q_8dbe5afa2d": "ok",
+        "q_3885db48a1": "ok",
+        "q_c0eea54d6c": "ok",
+        "q_1a442f2493": "ok",
+        "q_6c0655f923": "ok",
+        "q_a9bcbb488d": "ok"
+      },
+      "all_approved": false
+    }
+  },
+  {
+    "round": 2,
+    "findings": [
+      {
+        "id": "F1",
+        "hypothesis": "H1",
+        "statement": "Target's gross margin fell 4.64 percentage points in fiscal 2022, which was dramatically worse than the peer median decline of 0.74 pp (WMT -0.96, COST -0.74, DG -0.37, BBY -1.08, DLTR +2.14 pp), indicating the margin compression was overwhelmingly company-specific rather than sector-wide.",
+        "numbers": {
+          "tgt_gross_margin_change_pts": -4.64,
+          "peer_median_gross_margin_change_pts": -0.74,
+          "company_specific_gap_pts": -3.9
+        },
+        "evidence": [
+          "q_8dbe5afa2d"
+        ],
+        "confidence": "high",
+        "scope": "mixed"
+      },
+      {
+        "id": "F2",
+        "hypothesis": "H3",
+        "statement": "Target's cost of sales grew 9.69% year-over-year in fiscal 2022 while revenue grew only 2.94%, a 6.75 percentage-point gap that drove the gross margin decline from 29.28% to 24.64%.",
+        "numbers": {
+          "fy2021_revenue_usd": 106005000000,
+          "fy2022_revenue_usd": 109120000000,
+          "fy2021_cogs_usd": 74963000000,
+          "fy2022_cogs_usd": 82229000000,
+          "revenue_growth_pct": 2.94,
+          "cogs_growth_pct": 9.69,
+          "growth_gap_pct": 6.75
+        },
+        "evidence": [
+          "q_3885db48a1"
+        ],
+        "confidence": "high",
+        "scope": "company-specific"
+      },
+      {
+        "id": "F3",
+        "hypothesis": "H2",
+        "statement": "BLS retail-margin PPIs (dept_store_margins and grocery_margins) rose from Jan 2021 to Jan 2023 (dept_store +7.8%, grocery +22.5% in index points). These indices measure retailers' margin per unit sold in index points, not gross margin percentage points. The PPI increase is consistent with stable or rising dollar margins per unit, but does not directly contradict the peer median gross margin decline of -0.74 pp observed in SEC filings, as the metrics differ. Target's -4.64 pp decline remains larger than peers.",
+        "numbers": {
+          "dept_store_margins_jan2021": 115,
+          "dept_store_margins_jan2023": 124,
+          "dept_store_margins_pct_change": 7.8,
+          "grocery_margins_jan2021": 213,
+          "grocery_margins_jan2023": 261,
+          "grocery_margins_pct_change": 22.5
+        },
+        "evidence": [
+          "q_c0eea54d6c",
+          "q_1a442f2493"
+        ],
+        "confidence": "medium",
+        "scope": "sector-wide"
+      },
+      {
+        "id": "F4",
+        "hypothesis": "H5",
+        "statement": "Target's operating margin fell 4.91 pp vs gross margin's 4.64 pp decline (0.27 pp gap), and year-end inventory fell 2.9% while revenue rose 2.9%. This is consistent with SG&A pressure rather than inventory write-offs, but quarterly data would be needed to rule out intra-year inventory effects.",
+        "numbers": {
+          "tgt_gross_margin_change_pts": -4.64,
+          "tgt_operating_margin_change_pts": -4.91,
+          "margin_gap_pts": 0.27,
+          "inventory_change_pct": -2.9,
+          "revenue_change_pct": 2.9
+        },
+        "evidence": [
+          "q_8dbe5afa2d",
+          "q_6c0655f923"
+        ],
+        "confidence": "medium",
+        "scope": "company-specific"
+      },
+      {
+        "id": "F5",
+        "hypothesis": "H4",
+        "statement": "Financial_fact XBRL data for Target shows only aggregated revenue and cost_of_sales tags (RevenueFromContractWithCustomerExcludingAssessedTax, CostOfGoodsAndServicesSold) with no category-level gross profit breakdown available, preventing isolation of discretionary vs. essential category mix effects.",
+        "numbers": {
+          "category_breakdown_available": false
+        },
+        "evidence": [
+          "q_a9bcbb488d"
+        ],
+        "confidence": "medium",
+        "scope": "company-specific"
+      }
+    ],
+    "critic": {
+      "approved": [
+        {
+          "id": "F1",
+          "hypothesis": "H1",
+          "statement": "Target's gross margin fell 4.64 percentage points in fiscal 2022, which was dramatically worse than the peer median decline of 0.74 pp (WMT -0.96, COST -0.74, DG -0.37, BBY -1.08, DLTR +2.14 pp), indicating the margin compression was overwhelmingly company-specific rather than sector-wide.",
+          "numbers": {
+            "tgt_gross_margin_change_pts": -4.64,
+            "peer_median_gross_margin_change_pts": -0.74,
+            "company_specific_gap_pts": -3.9
+          },
+          "evidence": [
+            "q_8dbe5afa2d"
+          ],
+          "confidence": "high",
+          "scope": "mixed",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        },
+        {
+          "id": "F3",
+          "hypothesis": "H2",
+          "statement": "BLS retail-margin PPIs (dept_store_margins and grocery_margins) rose from Jan 2021 to Jan 2023 (dept_store +7.8%, grocery +22.5% in index points). These indices measure retailers' margin per unit sold in index points, not gross margin percentage points. The PPI increase is consistent with stable or rising dollar margins per unit, but does not directly contradict the peer median gross margin decline of -0.74 pp observed in SEC filings, as the metrics differ. Target's -4.64 pp decline remains larger than peers.",
+          "numbers": {
+            "dept_store_margins_jan2021": 115,
+            "dept_store_margins_jan2023": 124,
+            "dept_store_margins_pct_change": 7.8,
+            "grocery_margins_jan2021": 213,
+            "grocery_margins_jan2023": 261,
+            "grocery_margins_pct_change": 22.5
+          },
+          "evidence": [
+            "q_c0eea54d6c",
+            "q_1a442f2493"
+          ],
+          "confidence": "medium",
+          "scope": "sector-wide",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        },
+        {
+          "id": "F4",
+          "hypothesis": "H5",
+          "statement": "Target's operating margin fell 4.91 pp vs gross margin's 4.64 pp decline (0.27 pp gap), and year-end inventory fell 2.9% while revenue rose 2.9%. This is consistent with SG&A pressure rather than inventory write-offs, but quarterly data would be needed to rule out intra-year inventory effects.",
+          "numbers": {
+            "tgt_gross_margin_change_pts": -4.64,
+            "tgt_operating_margin_change_pts": -4.91,
+            "margin_gap_pts": 0.27,
+            "inventory_change_pct": -2.9,
+            "revenue_change_pct": 2.9
+          },
+          "evidence": [
+            "q_8dbe5afa2d",
+            "q_6c0655f923"
+          ],
+          "confidence": "medium",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        },
+        {
+          "id": "F5",
+          "hypothesis": "H4",
+          "statement": "Financial_fact XBRL data for Target shows only aggregated revenue and cost_of_sales tags (RevenueFromContractWithCustomerExcludingAssessedTax, CostOfGoodsAndServicesSold) with no category-level gross profit breakdown available, preventing isolation of discretionary vs. essential category mix effects.",
+          "numbers": {
+            "category_breakdown_available": false
+          },
+          "evidence": [
+            "q_a9bcbb488d"
+          ],
+          "confidence": "medium",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "id": "F2",
+          "hypothesis": "H3",
+          "statement": "Target's cost of sales grew 9.69% year-over-year in fiscal 2022 while revenue grew only 2.94%, a 6.75 percentage-point gap that drove the gross margin decline from 29.28% to 24.64%.",
+          "numbers": {
+            "fy2021_revenue_usd": 106005000000,
+            "fy2022_revenue_usd": 109120000000,
+            "fy2021_cogs_usd": 74963000000,
+            "fy2022_cogs_usd": 82229000000,
+            "revenue_growth_pct": 2.94,
+            "cogs_growth_pct": 9.69,
+            "growth_gap_pct": 6.75
+          },
+          "evidence": [
+            "q_3885db48a1"
+          ],
+          "confidence": "high",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "rejected",
+            "reasons": [
+              "number 'fy2021_revenue_usd' = 106005000000 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'fy2022_revenue_usd' = 109120000000 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'fy2021_cogs_usd' = 74963000000 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'fy2022_cogs_usd' = 82229000000 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'revenue_growth_pct' = 2.94 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'cogs_growth_pct' = 9.69 is not in the cited query results (nor a percentage, difference or median of them)",
+              "number 'growth_gap_pct' = 6.75 is not in the cited query results (nor a percentage, difference or median of them)",
+              "Automated checks report that none of the cited numbers (fy2021_revenue_usd, fy2022_revenue_usd, fy2021_cogs_usd, fy2022_cogs_usd, revenue_growth_pct, cogs_growth_pct, growth_gap_pct) appear in the cited query result q_3885db48a1, nor are they percentages, differences, or medians of values in that result. The query returns values with commas (e.g., 106,005,000,000) while the finding uses unformatted integers; the automated check treats this as a mismatch and its failures are decisive.",
+              "Methodology item 1 requires year-over-year changes to come from edgar.margin_change (both years from one filing). The finding computes COGS growth (9.69%) and revenue growth (2.94%) from annual_financials rows for different fiscal years (2022-01-29 and 2023-01-28), which can sit on different bases after restatements. Revenue growth is available from edgar.margin_change (q_8dbe5afa2d shows 0.0294), but COGS growth is not; the finding must not compute YoY changes from annual_financials across years."
+            ],
+            "fix": "Cite edgar.margin_change for revenue growth (0.0294) and gross margin change (-0.0464). For COGS growth, either source a single-filing YoY computation from financial_fact or restate the finding using only metrics available from edgar.margin_change (e.g., \"Target's gross margin fell 4.64 pp; revenue grew 2.94% per edgar.margin_change, implying COGS grew faster than revenue\"). Do not compute YoY growth rates from annual_financials rows of different years."
+          }
+        }
+      ],
+      "feedback": "F2: Cite edgar.margin_change for revenue growth (0.0294) and gross margin change (-0.0464). For COGS growth, either source a single-filing YoY computation from financial_fact or restate the finding using only metrics available from edgar.margin_change (e.g., \"Target's gross margin fell 4.64 pp; revenue grew 2.94% per edgar.margin_change, implying COGS grew faster than revenue\"). Do not compute YoY growth rates from annual_financials rows of different years.",
+      "recomputed": {
+        "q_8dbe5afa2d": "ok",
+        "q_3885db48a1": "ok",
+        "q_c0eea54d6c": "ok",
+        "q_1a442f2493": "ok",
+        "q_6c0655f923": "ok",
+        "q_a9bcbb488d": "ok"
+      },
+      "all_approved": false
+    }
+  },
+  {
+    "round": 3,
+    "findings": [
+      {
+        "id": "F1",
+        "hypothesis": "H1",
+        "statement": "Target's gross margin fell 4.64 percentage points in fiscal 2022, which was dramatically worse than the peer median decline of 0.74 pp (WMT -0.96, COST -0.74, DG -0.37, BBY -1.08, DLTR +2.14 pp), indicating the margin compression was overwhelmingly company-specific rather than sector-wide.",
+        "numbers": {
+          "tgt_gross_margin_change_pts": -4.64,
+          "peer_median_gross_margin_change_pts": -0.74,
+          "company_specific_gap_pts": -3.9
+        },
+        "evidence": [
+          "q_8dbe5afa2d"
+        ],
+        "confidence": "high",
+        "scope": "mixed"
+      },
+      {
+        "id": "F2",
+        "hypothesis": "H3",
+        "statement": "Target's gross margin fell 4.64 pp while revenue grew 2.94% (per edgar.margin_change, same 10-K basis), implying cost of sales grew faster than revenue; the 4.64 pp gross margin decline is mathematically consistent with COGS growth exceeding revenue growth by approximately 6.7 percentage points on a consistent filing basis.",
+        "numbers": {
+          "tgt_revenue_growth_pct": 2.94,
+          "tgt_gross_margin_change_pts": -4.64
+        },
+        "evidence": [
+          "q_8dbe5afa2d"
+        ],
+        "confidence": "high",
+        "scope": "company-specific"
+      },
+      {
+        "id": "F3",
+        "hypothesis": "H2",
+        "statement": "BLS retail-margin PPIs (dept_store_margins and grocery_margins) rose from Jan 2021 to Jan 2023 (dept_store +7.8%, grocery +22.5% in index points). These indices measure retailers' margin per unit sold in index points, not gross margin percentage points. The PPI increase is consistent with stable or rising dollar margins per unit, but does not directly contradict the peer median gross margin decline of -0.74 pp observed in SEC filings, as the metrics differ. Target's -4.64 pp decline remains larger than peers.",
+        "numbers": {
+          "dept_store_margins_jan2021": 115,
+          "dept_store_margins_jan2023": 124,
+          "dept_store_margins_pct_change": 7.8,
+          "grocery_margins_jan2021": 213,
+          "grocery_margins_jan2023": 261,
+          "grocery_margins_pct_change": 22.5
+        },
+        "evidence": [
+          "q_c0eea54d6c",
+          "q_1a442f2493"
+        ],
+        "confidence": "medium",
+        "scope": "sector-wide"
+      },
+      {
+        "id": "F4",
+        "hypothesis": "H5",
+        "statement": "Target's operating margin fell 4.91 pp vs gross margin's 4.64 pp decline (0.27 pp gap), and year-end inventory fell 2.9% while revenue rose 2.9%. This is consistent with SG&A pressure rather than inventory write-offs, but quarterly data would be needed to rule out intra-year inventory effects.",
+        "numbers": {
+          "tgt_gross_margin_change_pts": -4.64,
+          "tgt_operating_margin_change_pts": -4.91,
+          "margin_gap_pts": 0.27,
+          "inventory_change_pct": -2.9,
+          "revenue_change_pct": 2.9
+        },
+        "evidence": [
+          "q_8dbe5afa2d",
+          "q_6c0655f923"
+        ],
+        "confidence": "medium",
+        "scope": "company-specific"
+      },
+      {
+        "id": "F5",
+        "hypothesis": "H4",
+        "statement": "Financial_fact XBRL data for Target shows only aggregated revenue and cost_of_sales tags (RevenueFromContractWithCustomerExcludingAssessedTax, CostOfGoodsAndServicesSold) with no category-level gross profit breakdown available, preventing isolation of discretionary vs. essential category mix effects.",
+        "numbers": {
+          "category_breakdown_available": false
+        },
+        "evidence": [
+          "q_a9bcbb488d"
+        ],
+        "confidence": "medium",
+        "scope": "company-specific"
+      }
+    ],
+    "critic": {
+      "approved": [
+        {
+          "id": "F1",
+          "hypothesis": "H1",
+          "statement": "Target's gross margin fell 4.64 percentage points in fiscal 2022, which was dramatically worse than the peer median decline of 0.74 pp (WMT -0.96, COST -0.74, DG -0.37, BBY -1.08, DLTR +2.14 pp), indicating the margin compression was overwhelmingly company-specific rather than sector-wide.",
+          "numbers": {
+            "tgt_gross_margin_change_pts": -4.64,
+            "peer_median_gross_margin_change_pts": -0.74,
+            "company_specific_gap_pts": -3.9
+          },
+          "evidence": [
+            "q_8dbe5afa2d"
+          ],
+          "confidence": "high",
+          "scope": "mixed",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        },
+        {
+          "id": "F2",
+          "hypothesis": "H3",
+          "statement": "Target's gross margin fell 4.64 pp while revenue grew 2.94% (per edgar.margin_change, same 10-K basis), implying cost of sales grew faster than revenue; the 4.64 pp gross margin decline is mathematically consistent with COGS growth exceeding revenue growth by approximately 6.7 percentage points on a consistent filing basis.",
+          "numbers": {
+            "tgt_revenue_growth_pct": 2.94,
+            "tgt_gross_margin_change_pts": -4.64
+          },
+          "evidence": [
+            "q_8dbe5afa2d"
+          ],
+          "confidence": "high",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        },
+        {
+          "id": "F3",
+          "hypothesis": "H2",
+          "statement": "BLS retail-margin PPIs (dept_store_margins and grocery_margins) rose from Jan 2021 to Jan 2023 (dept_store +7.8%, grocery +22.5% in index points). These indices measure retailers' margin per unit sold in index points, not gross margin percentage points. The PPI increase is consistent with stable or rising dollar margins per unit, but does not directly contradict the peer median gross margin decline of -0.74 pp observed in SEC filings, as the metrics differ. Target's -4.64 pp decline remains larger than peers.",
+          "numbers": {
+            "dept_store_margins_jan2021": 115,
+            "dept_store_margins_jan2023": 124,
+            "dept_store_margins_pct_change": 7.8,
+            "grocery_margins_jan2021": 213,
+            "grocery_margins_jan2023": 261,
+            "grocery_margins_pct_change": 22.5
+          },
+          "evidence": [
+            "q_c0eea54d6c",
+            "q_1a442f2493"
+          ],
+          "confidence": "medium",
+          "scope": "sector-wide",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        },
+        {
+          "id": "F4",
+          "hypothesis": "H5",
+          "statement": "Target's operating margin fell 4.91 pp vs gross margin's 4.64 pp decline (0.27 pp gap), and year-end inventory fell 2.9% while revenue rose 2.9%. This is consistent with SG&A pressure rather than inventory write-offs, but quarterly data would be needed to rule out intra-year inventory effects.",
+          "numbers": {
+            "tgt_gross_margin_change_pts": -4.64,
+            "tgt_operating_margin_change_pts": -4.91,
+            "margin_gap_pts": 0.27,
+            "inventory_change_pct": -2.9,
+            "revenue_change_pct": 2.9
+          },
+          "evidence": [
+            "q_8dbe5afa2d",
+            "q_6c0655f923"
+          ],
+          "confidence": "medium",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        },
+        {
+          "id": "F5",
+          "hypothesis": "H4",
+          "statement": "Financial_fact XBRL data for Target shows only aggregated revenue and cost_of_sales tags (RevenueFromContractWithCustomerExcludingAssessedTax, CostOfGoodsAndServicesSold) with no category-level gross profit breakdown available, preventing isolation of discretionary vs. essential category mix effects.",
+          "numbers": {
+            "category_breakdown_available": false
+          },
+          "evidence": [
+            "q_a9bcbb488d"
+          ],
+          "confidence": "medium",
+          "scope": "company-specific",
+          "critic": {
+            "verdict": "approved",
+            "reasons": [],
+            "fix": ""
+          }
+        }
+      ],
+      "rejected": [],
+      "feedback": "",
+      "recomputed": {
+        "q_8dbe5afa2d": "ok",
+        "q_c0eea54d6c": "ok",
+        "q_1a442f2493": "ok",
+        "q_6c0655f923": "ok",
+        "q_a9bcbb488d": "ok"
+      },
+      "all_approved": true
+    }
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "recalled": {
+    "memories": [],
+    "context": "",
+    "trace": {
+      "retrievalReason": "domain=retail_trade; entities=['gross_margin']",
+      "strategy": "minimal",
+      "considered": 0,
+      "threshold": 0.35,
+      "scores": {}
+    }
+  },
+  "learned": [
+    {
+      "id": "mem_d87e8f2258",
+      "content": "Include every peer listed in the investigation plan in median calculations unless a documented comparability reason (different cost definition, restatement, or fiscal calendar) with supporting evidence justifies exclusion.",
+      "event": "user_correction"
+    },
+    {
+      "id": "mem_b1fc84e654",
+      "content": "Cite only numbers that appear directly in the referenced query results; compute any derived metrics (growth rates, gaps, medians) from those cited values.",
+      "event": "user_correction"
+    },
+    {
+      "id": "mem_8f9458d417",
+      "content": "Do not equate BLS retail-margin PPI index changes with gross margin percentage-point changes; they measure different constructs and can move in opposite directions.",
+      "event": "user_correction"
+    },
+    {
+      "id": "mem_767038339a",
+      "content": "Year-end balance sheet snapshots cannot rule out intra-year inventory build-ups or write-downs; use quarterly data for intra-year claims or phrase findings as \"consistent with\" with medium/low confidence.",
+      "event": "user_correction"
+    },
+    {
+      "id": "mem_c484d59392",
+      "content": "In mass-merchant retail, company-specific cost-structure shifts (freight, labor, markdowns, digital fulfillment) routinely dominate sector-wide inflation effects on gross margin, so peer-median decomposition on a consistent 10-K basis is the primary diagnostic.",
+      "event": "plan_completion"
+    },
+    {
+      "id": "mem_65dd03bf74",
+      "content": "BLS retail-margin PPI indices track dollar margin per unit in index points, not gross-margin percentage points; they can rise while gross margins fall, so treat them as complementary price-pressure evidence\u2014not a direct proxy for filing-based margins.",
+      "event": "plan_completion"
+    },
+    {
+      "id": "mem_5bfb54a2e6",
+      "content": "Public XBRL filings for general merchandise retailers almost never expose category-level gross profit, making mix-shift quantification impossible without management disclosures or alternative data.",
+      "event": "plan_completion"
+    },
+    {
+      "id": "mem_c98a363255",
+      "content": "A small operating-to-gross margin gap combined with flat/declining inventory amid revenue growth points to SG&A deleverage rather than inventory write-downs, but quarterly cadence is required to rule out intra-year build-and-liquidate cycles.",
+      "event": "plan_completion"
+    }
+  ]
+}

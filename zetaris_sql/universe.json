@@ -1,0 +1,39 @@
+{
+  "_comment": "Demo universe: US big-box retail. metric -> the us-gaap tag each company actually reports (checked against SEC companyfacts, 27 Oct 2026). Tags differ per company and change over time; this map is the reconciliation layer.",
+  "companies": [
+    {"ticker": "TGT",  "name": "Target",         "cik": "0000027419", "tags": {
+      "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "cost_of_sales": "CostOfGoodsAndServicesSold",
+      "operating_income": "OperatingIncomeLoss",
+      "inventory": "InventoryNet"}},
+    {"ticker": "WMT",  "name": "Walmart",        "cik": "0000104169", "tags": {
+      "revenue": "Revenues",
+      "cost_of_sales": "CostOfRevenue",
+      "operating_income": "OperatingIncomeLoss",
+      "inventory": "InventoryNet"}},
+    {"ticker": "COST", "name": "Costco",         "cik": "0000909832", "tags": {
+      "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "cost_of_sales": "CostOfGoodsAndServicesSold",
+      "operating_income": "OperatingIncomeLoss",
+      "inventory": "InventoryNet"}},
+    {"ticker": "KR",   "name": "Kroger",         "cik": "0000056873", "tags": {
+      "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "cost_of_sales": "CostOfGoodsAndServiceExcludingDepreciationDepletionAndAmortization",
+      "operating_income": "OperatingIncomeLoss"},
+      "notes": "cost_of_sales excludes depreciation and amortization, so gross margin is not directly comparable to peers."},
+    {"ticker": "DG",   "name": "Dollar General", "cik": "0000029534", "tags": {
+      "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "cost_of_sales": "CostOfGoodsAndServicesSold",
+      "operating_income": "OperatingIncomeLoss",
+      "inventory": "InventoryNet"}},
+    {"ticker": "DLTR", "name": "Dollar Tree",    "cik": "0000935703", "tags": {
+      "revenue": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "cost_of_sales": "CostOfGoodsAndServicesSold",
+      "operating_income": "OperatingIncomeLoss"}},
+    {"ticker": "BBY",  "name": "Best Buy",       "cik": "0000764478", "tags": {
+      "revenue": "Revenues",
+      "cost_of_sales": "CostOfGoodsAndServicesSold",
+      "operating_income": "OperatingIncomeLoss",
+      "inventory": "InventoryNet"}}
+  ]
+}

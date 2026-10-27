@@ -1,0 +1,109 @@
+{
+  "recalled": {
+    "memories": [
+      {
+        "id": "mem_8f9458d417",
+        "content": "Do not equate BLS retail-margin PPI index changes with gross margin percentage-point changes; they measure different constructs and can move in opposite directions.",
+        "layer": "working",
+        "domain": "retail_trade",
+        "entities": [
+          "gross_margin"
+        ],
+        "score": 0.461
+      },
+      {
+        "id": "mem_65dd03bf74",
+        "content": "BLS retail-margin PPI indices track dollar margin per unit in index points, not gross-margin percentage points; they can rise while gross margins fall, so treat them as complementary price-pressure evidence\u2014not a direct proxy for filing-based margins.",
+        "layer": "working",
+        "domain": "retail_trade",
+        "entities": [
+          "gross_margin"
+        ],
+        "score": 0.402
+      },
+      {
+        "id": "mem_c98a363255",
+        "content": "A small operating-to-gross margin gap combined with flat/declining inventory amid revenue growth points to SG&A deleverage rather than inventory write-downs, but quarterly cadence is required to rule out intra-year build-and-liquidate cycles.",
+        "layer": "working",
+        "domain": "retail_trade",
+        "entities": [
+          "gross_margin",
+          "inventory",
+          "revenue"
+        ],
+        "score": 0.377
+      },
+      {
+        "id": "mem_c484d59392",
+        "content": "In mass-merchant retail, company-specific cost-structure shifts (freight, labor, markdowns, digital fulfillment) routinely dominate sector-wide inflation effects on gross margin, so peer-median decomposition on a consistent 10-K basis is the primary diagnostic.",
+        "layer": "working",
+        "domain": "retail_trade",
+        "entities": [
+          "gross_margin",
+          "freight",
+          "markdown"
+        ],
+        "score": 0.377
+      }
+    ],
+    "context": "## retail_trade\n- (working) Do not equate BLS retail-margin PPI index changes with gross margin percentage-point changes; they measure different constructs and can move in opposite directions. [gross_margin]\n- (working) BLS retail-margin PPI indices track dollar margin per unit in index points, not gross-margin percentage points; they can rise while gross margins fall, so treat them as complementary price-pressure evidence\u2014not a direct proxy for filing-based margins. [gross_margin]\n- (working) A small operating-to-gross margin gap combined with flat/declining inventory amid revenue growth points to SG&A deleverage rather than inventory write-downs, but quarterly cadence is required to rule out intra-year build-and-liquidate cycles. [gross_margin, inventory, revenue]\n- (working) In mass-merchant retail, company-specific cost-structure shifts (freight, labor, markdowns, digital fulfillment) routinely dominate sector-wide inflation effects on gross margin, so peer-median decomposition on a consistent 10-K basis is the primary diagnostic. [gross_margin, freight, markdown]",
+    "trace": {
+      "retrievalReason": "domain=retail_trade; entities=['gross_margin']",
+      "strategy": "comprehensive",
+      "considered": 8,
+      "threshold": 0.35,
+      "scores": {
+        "mem_8f9458d417": 0.461,
+        "mem_65dd03bf74": 0.402,
+        "mem_c98a363255": 0.377,
+        "mem_c484d59392": 0.377,
+        "mem_d87e8f2258": 0.284,
+        "mem_767038339a": 0.275,
+        "mem_b1fc84e654": 0.261,
+        "mem_5bfb54a2e6": 0.237
+      }
+    }
+  },
+  "learned": [
+    {
+      "id": "mem_b17693c998",
+      "content": "Always verify that causal claims about 'primary' drivers match the quantitative decomposition from edgar.margin_change (company_specific_pts vs peer_median_change_pts) and include all planned peers in the peer median or document exclusions.",
+      "event": "user_correction"
+    },
+    {
+      "id": "mem_58f8e8c4fb",
+      "content": "Never present derived percentages (e.g., revenue_change_pct, cogs_change_pct) as directly queried numbers; cite the peer-median query (edgar.margin_change) for sector-wide comparisons and the decomposition query for company-specific vs sector-wide attribution.",
+      "event": "user_correction"
+    },
+    {
+      "id": "mem_47d4a6681a",
+      "content": "Use quarterly financial_fact inventory for Q1-Q3 to assess intra-year build-up risk; cite edgar.margin_change for gross/operating margin changes and revenue growth; phrase inferences as 'consistent with' with medium confidence unless direct SG&A evidence exists.",
+      "event": "user_correction"
+    },
+    {
+      "id": "mem_17a63eea01",
+      "content": "Cite the actual margin_change queries for peer gross margin declines, recalculate PPI averages from raw monthly observations in lightning.metastore.causeway.retail_usl.price_index, and verify both truckload_freight and warehousing series values before asserting cost-pressure comparisons.",
+      "event": "user_correction"
+    },
+    {
+      "id": "mem_44b7a4e03b",
+      "content": "In mass-merchant retail, company-specific cost-structure shifts (freight, labor, markdowns, digital fulfillment) routinely dominate sector-wide inflation effects on gross margin, so peer-median decomposition on a consistent 10-K basis is the primary diagnostic.",
+      "event": "plan_completion"
+    },
+    {
+      "id": "mem_5d3d5a929b",
+      "content": "BLS retail-margin PPI indices track dollar margin per unit in index points, not gross-margin percentage points; they can rise while gross margins fall, so treat them as complementary price-pressure evidence\u2014not a direct proxy for filing-based margins.",
+      "event": "plan_completion"
+    },
+    {
+      "id": "mem_8d5dd3ce11",
+      "content": "Public XBRL filings for general merchandise retailers almost never expose category-level gross profit, making mix-shift quantification impossible without management disclosures or alternative data.",
+      "event": "plan_completion"
+    },
+    {
+      "id": "mem_72d9538f0e",
+      "content": "A small operating-to-gross margin gap combined with flat/declining inventory amid revenue growth points to SG&A deleverage rather than inventory write-downs, but quarterly cadence is required to rule out intra-year build-and-liquidate cycles.",
+      "event": "plan_completion"
+    }
+  ]
+}

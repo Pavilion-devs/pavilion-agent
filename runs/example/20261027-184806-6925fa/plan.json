@@ -1,0 +1,51 @@
+{
+  "ticker": "TGT",
+  "company": "Target",
+  "metric": "gross_margin",
+  "focus_period": "fiscal 2022",
+  "focus_fiscal_year_end_window": [
+    "2022-08-01",
+    "2023-05-01"
+  ],
+  "comparison": "Year-over-year gross margin change from edgar.margin_change, same 10-K filing basis, comparing fiscal 2022 to fiscal 2021",
+  "peers": [
+    "WMT",
+    "COST",
+    "DG",
+    "DLTR",
+    "BBY"
+  ],
+  "excluded_peers": [
+    {
+      "ticker": "KR",
+      "reason": "cost_of_sales excludes depreciation and amortization per semantic layer docs, making gross margin not directly comparable"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "driver": "Sector-wide gross margin compression across retail peers during fiscal 2022, driven by broad input cost inflation",
+      "how_to_test": "Query edgar.margin_change for peer gross_margin_change distribution; compute median change and compare TGT's -4.64 pp decline against peer median to isolate sector vs company-specific component"
+    },
+    {
+      "id": "H2",
+      "driver": "BLS producer price index inflation on retail-margin PPIs (dept_store_margins, grocery_margins) reflecting sector-wide cost pressures during fiscal 2022",
+      "how_to_test": "Query lightning.metastore.causeway.retail_usl.price_index for series_name in ('dept_store_margins','grocery_margins') observation_date between '2021-01-01' and '2023-12-31' to determine if index movements align with margin compression breadth"
+    },
+    {
+      "id": "H3",
+      "driver": "Target-specific cost of sales growth outpaced revenue growth in fiscal 2022, driven by labor wage investments, supply chain remodeling, and digital fulfillment expansion",
+      "how_to_test": "Extract from lightning.metastore.causeway.retail_usl.annual_financials TGT's revenue and cost_of_sales for fiscal 2022 vs 2021; compute revenue_growth ratio and COGS growth ratio; compare delta to peers via edgar.margin_change"
+    },
+    {
+      "id": "H4",
+      "driver": "Category mix shift within Target's portfolio, particularly discretionary and home goods categories experiencing margin pressure while essentials held steady",
+      "how_to_test": "Drill-down to lightning.metastore.causeway.retail_usl.financial_fact by xbrl_tag/metric='gross_profit' for TGT fiscal 2022 vs 2021 to isolate which departments or categories contributed most to the gross margin change"
+    },
+    {
+      "id": "H5",
+      "driver": "Shrinkage and inventory write-offs in fiscal 2022 diluted Target's gross margin beyond sector norms, indicating company-specific operational issues",
+      "how_to_test": "Compare TGT's operating_margin_change to gross_margin_change from edgar.margin_change; if operating margin fell more than gross margin, examine SG&A trends and inventory turnover trends in financial_fact for signs of inventory write-downs or shrinkage"
+    }
+  ]
+}
