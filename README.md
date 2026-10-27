@@ -1,4 +1,4 @@
-# Causeway
+# Pavilion
 
 **An agent that explains why a public company's numbers moved, and whether it was the company or the whole sector, where every number is checked against the data before an analyst sees it.**
 
@@ -6,13 +6,17 @@ Open Agent Hackathon 2026, Track 2: *The Agent That Can Explain Why*.
 
 Ask: *"Why did Target's gross margin fall in fiscal 2022? Was it Target or the whole sector?"*
 
-Causeway answers with a memo: Target's gross margin fell **4.64 points** while the median of five big-box peers fell **0.74**, so **3.90 points were specific to Target**. Every number carries the id of the Zetaris query that produced it, and that query was re-run and matched before the number was allowed into the memo.
+Pavilion answers with a memo: Target's gross margin fell **4.64 points** while the median of five big-box peers fell **0.74**, so **3.90 points were specific to Target**. Every number carries the id of the Zetaris query that produced it, and that query was re-run and matched before the number was allowed into the memo.
 
 ## Why this matters
 
-Analysts asking *why* a margin moved spend hours pulling filings, lining up fiscal years, choosing peers and checking whether a change is real or a restatement. LLMs can draft that story in seconds, but they also invent numbers, cherry-pick peers and confuse units. Causeway makes the explanation **auditable**: an agent can only state what a query returned, and a separate Critic tries to break each claim before it ships.
+Analysts asking *why* a margin moved spend hours pulling filings, lining up fiscal years, choosing peers and checking whether a change is real or a restatement. LLMs can draft that story in seconds, but they also invent numbers, cherry-pick peers and confuse units. Pavilion makes the explanation **auditable**: an agent can only state what a query returned, and a separate Critic tries to break each claim before it ships.
 
 ## How it works
+
+![Pavilion architecture](docs/architecture/pavilion-architecture.png)
+
+The editable diagram is `docs/architecture/pavilion.excalidraw` (open it at excalidraw.com).
 
 ```
 Analyst question
@@ -81,7 +85,7 @@ Every model call carries a Nightshift compute receipt naming the model that serv
 - **World Model** (`causeway/engines/world_model.py`): stable hash IDs, an append-only event log with exactly-once appends, an ingest pipeline that turns every Zetaris result into facts with provenance, and a read surface with conflict detection. The Critic grounds every number in these facts.
 - **H-MEM** (`causeway/engines/hmem.py`): working and long-term tiers, the hybrid retrieval score (semantic, keyword, tag, domain, entity, layer, recency, superseded penalty, times confidence, threshold 0.35), a trust ledger, feedback deltas, and mining with a direct-capture fallback.
 
-**Coding agent.** Causeway was built with Claude Code as the AI coding agent.
+**Coding agent.** Pavilion was built with Claude Code as the AI coding agent.
 
 ## Run it
 
@@ -97,7 +101,7 @@ for f in zetaris_sql/sources/*.sql zetaris_sql/usl/*.sql zetaris_sql/dq/01_dq_ru
 .venv/bin/python -m causeway ask "Why did Target's gross margin fall in fiscal 2022? Was it Target or the whole sector?"
 ```
 
-**Replay a recorded run (no services needed):**
+**The Pavilion dashboard (replays recorded runs, no services needed):**
 
 ```bash
 .venv/bin/python scripts/build_replay.py runs/<run_id> [runs/<run_id> ...]   # optional: rebuild from your own runs

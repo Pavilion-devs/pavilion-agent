@@ -78,7 +78,7 @@ def main(run_dirs: list[str]) -> None:
     data = {"runs": [bundle(Path(r)) for r in run_dirs], "dq": dq_rules()}
     out = ROOT / "web" / "replay_data.js"
     out.parent.mkdir(exist_ok=True)
-    out.write_text("window.CAUSEWAY = " + json.dumps(data, default=str) + ";\n")
+    out.write_text("window.PAVILION = " + json.dumps(data, default=str) + ";\n")
     print(f"wrote {out} ({out.stat().st_size // 1024} KB): " + ", ".join(r["id"] for r in data["runs"]))
 
 
