@@ -104,7 +104,7 @@ for f in zetaris_sql/sources/*.sql zetaris_sql/usl/*.sql zetaris_sql/dq/01_dq_ru
 python3 -m http.server 8765 --directory web                                  # then open http://localhost:8765
 ```
 
-`SETUP.md` walks through the Zetaris, Nightshift and NVIDIA setup step by step.
+`docs/demo-script.md` is the demo walkthrough. `SETUP.md` walks through the Zetaris, Nightshift and NVIDIA setup step by step.
 
 ## Repository
 
