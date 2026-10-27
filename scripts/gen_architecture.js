@@ -75,7 +75,7 @@ box(L + 818, OY, 424, 98, "Pavilion dashboard · web/\ntimeline · Critic rounds
 rect(L + 1290, OY + 8, 232, 82); text(L + 1300, OY + 20, 212, "Analysts\ncredit + equity research\nask why, get proof", 14);
 arrow(L + 1288, OY + 49, -44, 0);
 text(L, OY + 147, 600, "AGENTS QUERY\nTHE CRITIC RE-RUNS\nEVERY NUMBER HAS A SOURCE\nMEMORY LEARNS FROM REJECTIONS", 28);
-text(L + 626, OY + 157, 560, "question → plan → SQL → recompute → verdict → memo → lesson\nZetaris · Meterless Nightshift · NVIDIA Nemotron · World Model · H-MEM\ngithub.com/Pavilion-devs/pavilion", 13, {color: G});
+text(L + 626, OY + 157, 560, "question → plan → SQL → recompute → verdict → memo → lesson\nZetaris · Meterless Nightshift · NVIDIA Nemotron · World Model · H-MEM\ngithub.com/Pavilion-devs/pavilion-agent", 13, {color: G});
 
 fs.writeFileSync(process.argv[2], JSON.stringify({type: "excalidraw", version: 2, source: "https://excalidraw.com",
   elements: els, appState: {viewBackgroundColor: "#ffffff", gridSize: null}, files: {}}, null, 1));
