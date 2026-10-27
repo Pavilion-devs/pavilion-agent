@@ -9,3 +9,4 @@ runs/*
 !runs/example/
 .DS_Store
 state/
+video/

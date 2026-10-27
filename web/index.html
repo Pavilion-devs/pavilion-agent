@@ -453,8 +453,15 @@ document.addEventListener("click", e => {
   if (t.dataset.run) { clearTimeout(timer); timer = null; ri = +t.dataset.run; run = D.runs[ri]; idx = run.events.length; page = "overview"; closeDrawer(); return renderAll(); }
 });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+// Deep links for stills: ?run=1&page=critic&finding=1:F1&query=q_...&theme=light
+const qs = new URLSearchParams(location.search);
+if (qs.get("theme")) document.documentElement.dataset.theme = qs.get("theme");
+if (qs.get("run")) { ri = +qs.get("run"); run = D.runs[ri]; }
+if (qs.get("page")) page = qs.get("page");
 idx = run.events.length;
 renderAll();
+if (qs.get("finding")) openFinding(qs.get("finding"));
+if (qs.get("query")) openQuery(qs.get("query"));
 </script>
 </body>
 </html>

@@ -1,130 +1,242 @@
-# Pavilion
+# Pavilion — From an Analyst's Question to a Memo Where Every Number Has a Source
 
-**An agent that explains why a public company's numbers moved, and whether it was the company or the whole sector, where every number is checked against the data before an analyst sees it.**
+> Pavilion explains why a public company's numbers moved, and whether it was the company or the whole sector. Its agents query a Zetaris semantic layer over live SEC data, a separate Critic re-runs every query behind every claim, and only findings that survive reach the analyst's memo.
 
-Open Agent Hackathon 2026, Track 2: *The Agent That Can Explain Why*.
+Built for the Open Agent Hackathon 2026, Track 2: *The Agent That Can Explain Why*.
 
-Ask: *"Why did Target's gross margin fall in fiscal 2022? Was it Target or the whole sector?"*
+* * *
+## Live
+  * Dashboard: run locally with `python3 -m http.server 8765 --directory web`, then open `http://localhost:8765`. It replays two recorded runs, so no services are needed.
+  * 🎥 Demo video: [YouTube link to be added]
+  * 📖 Setup guide: [`SETUP.md`](SETUP.md)
+  * 🗺️ Architecture: see [Architecture](#architecture) below
 
-Pavilion answers with a memo: Target's gross margin fell **4.64 points** while the median of five big-box peers fell **0.74**, so **3.90 points were specific to Target**. Every number carries the id of the Zetaris query that produced it, and that query was re-run and matched before the number was allowed into the memo.
+* * *
+## Table of Contents
 
-## Why this matters
+  * [Quick Path](#quick-path)
+  * [Why It Stands Out](#why-it-stands-out)
+  * [What it does](#what-it-does)
+  * [Architecture](#architecture)
+  * [Requirements](#requirements)
+  * [Setup](#setup)
+  * [Usage](#usage)
+  * [Pavilion at the evidence boundary](#pavilion-at-the-evidence-boundary)
+    * [From a question to a plan](#from-a-question-to-a-plan)
+    * [One Zetaris semantic layer](#one-zetaris-semantic-layer)
+    * [The Critic gate](#the-critic-gate)
+    * [Validation and safety boundaries](#validation-and-safety-boundaries)
+  * [Project layout](#project-layout)
+  * [AI assistance](#ai-assistance)
+  * [License](#license)
 
-Analysts asking *why* a margin moved spend hours pulling filings, lining up fiscal years, choosing peers and checking whether a change is real or a restatement. LLMs can draft that story in seconds, but they also invent numbers, cherry-pick peers and confuse units. Pavilion makes the explanation **auditable**: an agent can only state what a query returned, and a separate Critic tries to break each claim before it ships.
+* * *
+## Quick Path
 
-## How it works
+If you want the shortest path through the project:
 
-![Pavilion architecture](docs/architecture/pavilion-architecture.png)
-
-The editable diagram is `docs/architecture/pavilion.excalidraw` (open it at excalidraw.com).
-
+```bash
+python3 -m http.server 8765 --directory web
 ```
+
+Then open `http://localhost:8765`. The Pavilion dashboard replays the recorded Target and Best Buy investigations from their real logs: press **Replay run**, open a finding to see the Critic's review, or click any query id to see the SQL Zetaris ran and the rows it returned.
+
+To run a live investigation against Zetaris and Nemotron, follow [Setup](#setup).
+
+## Why It Stands Out
+
+Pavilion takes on a question analysts ask every reporting season, and makes the answer auditable:
+
+  * It takes a practical input from a credit or equity analyst: *"Why did Target's gross margin fall in fiscal 2022? Was it Target or the whole sector?"*
+  * It answers from live public data: SEC EDGAR filings, sector codes and producer price indexes, unified in one Zetaris semantic layer.
+  * No agent may state a number it didn't query. A separate **Critic** re-executes every cited query in Zetaris, requires identical rows, checks every quoted number against those rows, and reviews the method with Nemotron Ultra.
+  * It learns from its own Critic: rejections become H-MEM lessons that the next investigation recalls before it plans.
+
+On the recorded Target run, the Critic rejected 4 of 5 findings in round 1, including a peer median that quietly dropped Dollar Tree because it didn't fit. All five were approved by round 3. The memo's answer: Target fell **−4.64** points against a peer median of **−0.74**, so **−3.90** points were Target's own.
+
+## What it does
+
+  * Analyst question: one sentence naming a company, a metric and a period.
+  * Planning: Nemotron Lightning picks the peer set, documents any exclusion with a reason, and writes 4–6 hypotheses covering both sector-wide and company-specific drivers.
+  * Investigation: Nemotron Ultra writes read-only SQL against the Zetaris semantic layer, one query per turn, and cites the query ids behind every finding.
+  * Verification: the Critic re-runs each cited query, grounds each number in the World Model's facts, and reviews the method against a checklist. Rejected findings go back with the specific fix, for up to 3 rounds.
+  * Memo: the Reporter writes only approved findings, with a query id on every number. Unverified claims appear only under Open questions.
+  * Memory: H-MEM mines lessons from the Critic's rejections and approvals, and recalls them before the next plan.
+
+## Architecture
+
+![Pavilion architecture: inputs, the Zetaris data layer, Nemotron agents via Meterless Nightshift, the World Model and H-MEM engines, and outputs](docs/architecture/pavilion-architecture.png)
+
+The analyst's question goes to the Planner. The Investigator queries the Zetaris semantic layer over JDBC, every result is ingested into the World Model as facts with provenance, and the Critic re-runs and grounds each claim before the Reporter writes the memo. The editable diagram is [`docs/architecture/pavilion.excalidraw`](docs/architecture/pavilion.excalidraw).
+
+```text
 Analyst question
-   │
-   ▼
-H-MEM recall ── lessons from earlier investigations (e.g. "don't read retail-margin PPIs as margin points")
-   │
-Planner (Nemotron Lightning) ── company, period, peer set, exclusions with reasons, 4-6 hypotheses
-   │
-Investigator (Nemotron Ultra) ── writes read-only SQL against the Zetaris semantic layer, one query per turn
-   │
-Critic ─┬─ 1. re-executes every cited query in Zetaris; rows must match exactly
-        ├─ 2. every quoted number must be a fact from those rows (World Model), or a %/difference/median of them
-        └─ 3. Nemotron Ultra methodology review (peer cherry-picking, restatements, units, causal wording)
-   │       rejected findings go back to the Investigator with the specific fix, up to 3 rounds
-   ▼
-Reporter (Nemotron Ultra) ── memo from approved findings only, a query id on every number
-   │
-H-MEM learn ── Critic rejections become lessons; approved findings become patterns
+  → H-MEM recalls lessons from earlier investigations
+  → Planner (Nemotron Lightning) sets peers, exclusions and hypotheses
+  → Investigator (Nemotron Ultra) writes read-only SQL on the Zetaris semantic layer
+  → World Model ingests every result as facts with provenance
+  → Critic re-runs cited queries, grounds every number, reviews the method
+  → rejected findings return with the fix (up to 3 rounds)
+  → Reporter writes the memo from approved findings only
+  → H-MEM learns from the verdicts
 ```
 
-**Data (Zetaris).** A Unified Semantic Layer (`causeway.retail_usl`) over three live sources:
+Every model call goes through Meterless Nightshift and is logged with its compute receipt and the model that served it. Credentials stay in `.env` and in Nightshift's Providers; the agents only ever see query results.
 
-| Source | What | How it gets into Zetaris |
-|---|---|---|
-| SEC EDGAR XBRL API | Revenue, cost of sales, operating income, inventory for 7 US retailers (TGT, WMT, COST, KR, DG, DLTR, BBY), every 10-K and 10-Q | `CREATE LIGHTNING REST TABLE`, queried live |
-| SEC EDGAR submissions API | Company names, SIC codes, fiscal year ends | REST tables |
-| company_dns SIC hierarchy + BLS producer price indexes (via FRED) | Sector classification; retail-margin, freight and warehousing PPIs | SchemaStore views and a FILESTORE table |
+## Requirements
 
-USL tables: `sector_class`, `company`, `financial_fact`, `annual_financials`, `price_index`, plus the `edgar.margin_change` view that computes every year-over-year change **within one 10-K**, so restatements can't fake a jump (Dollar Tree's restated cost of sales did exactly that). Six data-quality rules are registered with `REGISTER DQ` and run with `RUN DQ` (0 invalid records).
+  * Python 3.11+
+  * Java 17 (for the Zetaris JDBC driver)
+  * Docker, with the Zetaris Lightning bundle running locally
+  * The official Zetaris JDBC driver (`ndp-jdbc-driver-2.4.3.1`)
+  * Meterless Nightshift, with an NVIDIA API key in its Providers
+  * A contact email for the SEC user agent, as SEC EDGAR requires
 
-## Results from real runs
+## Setup
 
-Both runs are in the replay page (`web/`), built from the runs' own logs. The full logs are in `runs/example/`: every step, every Zetaris query with its rows, every Critic verdict, and every Nightshift model call with its receipt (`logs/model_calls.jsonl`).
+### 1. Install dependencies
 
-**Target, first run, empty memory.** The Critic rejected 4 of 5 findings in round 1:
-
-- excluding Dollar Tree from the peer median because its margin rose ("cherry-picking"),
-- quoting dollar figures that no cited query returned,
-- reading retail-margin price indexes as gross-margin points,
-- using year-end inventory to rule out problems during the year.
-
-The Investigator fixed three in round 2 and the last in round 3, and all 5 findings were approved. The Critic re-ran the cited queries 17 times, and H-MEM learned 8 lessons.
-
-**Best Buy, second run.** H-MEM recalled 4 of those lessons before planning, and no Best Buy finding repeated the price-index mistake. Result: −1.08 points vs a peer median of −0.74, so −0.34 points company-specific. Two findings stayed unapproved after 3 rounds because the Investigator rounded −10.55% to −11%; the memo lists them as unverified, not as conclusions.
-
-Every model call carries a Nightshift compute receipt naming the model that served it. Target: 37 receipts, 32 on Nemotron Ultra and 5 on Nemotron Lightning.
-
-## Sponsor technology
-
-**Zetaris** is the only data path. The agent never sees raw files: it writes SQL against the USL over the official JDBC driver (`causeway/zetaris_client.py`). The Critic's recompute pass re-executes those queries in Zetaris. The DDL, DQ rules, cross-row checks and exploratory queries are in `zetaris_sql/`, and what we learned about the platform (11 findings, including the restatement trap, an int/bigint activation gap and DQ rules that can't use window functions) is in `docs/zetaris-findings.md`.
-
-**Meterless Nightshift** is the only AI provider (`causeway/generator.py`). It implements Runtime provider contract v4: bearer auth, `meterless-app` / `meterless-scope` headers, `/v1/models` as the online check, and auto-detect. Every call is logged with its compute receipt, routed model, latency, tokens and cache status (`runs/<id>/logs/model_calls.jsonl`). Hardening found in real runs:
-
-- Nightshift's exact-match cache ignores the system prompt, so each request carries a run and context tag.
-- A model that hangs falls back to the other Nemotron model.
-- `cloud_busy`, `cloud_unreachable` and `engine_not_running` are waited out instead of failing the run.
-
-**NVIDIA Nemotron**, both models through Nightshift:
-
-- `nemotron-3.5-lightning-30b-a3b` runs the Planner, with thinking off for speed.
-- `nemotron-3-ultra-550b-a55b` runs the Investigator, Critic, Reporter and memory miner.
-
-**Meterless engines**, implemented from the published specs, with tests:
-
-- **World Model** (`causeway/engines/world_model.py`): stable hash IDs, an append-only event log with exactly-once appends, an ingest pipeline that turns every Zetaris result into facts with provenance, and a read surface with conflict detection. The Critic grounds every number in these facts.
-- **H-MEM** (`causeway/engines/hmem.py`): working and long-term tiers, the hybrid retrieval score (semantic, keyword, tag, domain, entity, layer, recency, superseded penalty, times confidence, threshold 0.35), a trust ledger, feedback deltas, and mining with a direct-capture fallback.
-
-**Coding agent.** Pavilion was built with Claude Code as the AI coding agent.
-
-## Run it
-
-Requirements: Python 3.11+, Java 17, Docker, the Zetaris Lightning bundle running locally, and Meterless Nightshift with an NVIDIA key in its Providers.
+From the repository root:
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-cp .env.example .env     # fill in Nightshift token, Zetaris login, JDBC jar path, SEC user agent
-.venv/bin/python scripts/gen_edgar_sql.py && .venv/bin/python scripts/fetch_ppi.py
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+```
+
+### 2. Configure the environment
+
+Create the ignored local environment file:
+
+```bash
+cp .env.example .env
+```
+
+Set the values locally. Do not put secrets in chat, source files or commits.
+
+```dotenv
+METERLESS_BASE_URL=http://127.0.0.1:8088/v1
+METERLESS_RUNTIME_TOKEN=your_nightshift_runtime_token
+ZETARIS_URL=http://localhost:3000
+ZETARIS_USER=your_zetaris_user
+ZETARIS_PASSWORD=your_zetaris_password
+SEC_USER_AGENT="Pavilion your_contact_email"
+ZETARIS_JDBC_JAR=/absolute/path/to/ndp-jdbc-driver-2.4.3.1-driver.jar
+ZETARIS_JDBC_URL=jdbc:zetaris:lightning@localhost:10000
+JAVA_HOME=/path/to/java17
+```
+
+The NVIDIA key goes in Nightshift's Providers, not in this file. [`SETUP.md`](SETUP.md) walks through Zetaris, Nightshift and NVIDIA step by step.
+
+### 3. Build the semantic layer
+
+Generate the SEC source tables, fetch the price indexes, then create the sources, the USL and the data-quality rules in Zetaris:
+
+```bash
+.venv/bin/python scripts/gen_edgar_sql.py
+.venv/bin/python scripts/fetch_ppi.py
 for f in zetaris_sql/sources/*.sql zetaris_sql/usl/*.sql zetaris_sql/dq/01_dq_rules.sql; do .venv/bin/python scripts/run_sql.py "$f" --skip-exists; done
-.venv/bin/python -m pytest -q                       # 27 tests, no services needed
-.venv/bin/python -m causeway status
-.venv/bin/python -m causeway ask "Why did Target's gross margin fall in fiscal 2022? Was it Target or the whole sector?"
 ```
 
-**The Pavilion dashboard (replays recorded runs, no services needed):**
+### 4. Check and run
 
 ```bash
-.venv/bin/python scripts/build_replay.py runs/<run_id> [runs/<run_id> ...]   # optional: rebuild from your own runs
-python3 -m http.server 8765 --directory web                                  # then open http://localhost:8765
+.venv/bin/python -m pytest -q          # 27 tests, no services needed
+.venv/bin/python -m causeway status    # Nightshift and Zetaris reachable?
 ```
 
-`docs/demo-script.md` is the demo walkthrough. `SETUP.md` walks through the Zetaris, Nightshift and NVIDIA setup step by step.
+## Usage
 
-## Repository
+1. Ask a question:
 
+   ```bash
+   .venv/bin/python -m causeway ask "Why did Target's gross margin fall in fiscal 2022? Was it Target or the whole sector?"
+   ```
+
+2. Follow the live timeline in the terminal: the plan, each Zetaris query, the Critic's recompute and verdicts, and each model call with the Nemotron model that served it.
+3. Read the result in `runs/<run_id>/`: `memo.md`, `plan.json`, `rounds.json` (every Critic verdict), `memory.json` (lessons recalled and learned) and `logs/` (steps, queries with rows, model calls with receipts).
+4. Load the run into the dashboard:
+
+   ```bash
+   .venv/bin/python scripts/build_replay.py runs/<run_id>
+   python3 -m http.server 8765 --directory web
+   ```
+
+5. Ask a second question in the same sector, for example Best Buy, to see H-MEM recall the first run's lessons.
+
+A full run takes 50–60 minutes, most of it Nemotron Ultra calls that hang until the timeout; model working time is about 15 minutes. The two recorded runs are in [`runs/example/`](runs/example/).
+
+## Pavilion at the evidence boundary
+
+Pavilion sits between an analyst's question and the numbers that answer it:
+
+```text
+Analyst
+  → Pavilion planner and investigator
+  → Zetaris semantic layer over live SEC and BLS data
+  → Critic re-execution and number grounding
+  → memo with a query id on every number
 ```
-causeway/            agents, Critic, orchestrator, Nightshift generator, Zetaris client, evidence logs
-causeway/engines/    World Model and H-MEM
-zetaris_sql/         source tables, USL DDL, DQ rules, cross-row checks, exploratory queries
-scripts/             SQL runner, EDGAR SQL generator, PPI fetch, Critic replay, replay bundler
-tests/               27 tests: engines, Critic grounding, generator resilience
-web/                 replay page and the recorded runs it plays
-docs/                Zetaris findings and query evidence
+
+The agents propose; the Critic decides. No LLM decides whether a number is real: that is checked deterministically against rows Zetaris returned.
+
+### From a question to a plan
+
+The Planner turns the question into a company, a period, a peer set and hypotheses on both sides: sector-wide (did peers move too? did industry price indexes?) and company-specific (did cost of sales outgrow revenue? did operating leverage turn?). A peer can be excluded only with a documented reason. Kroger is excluded because its reported cost of sales leaves out depreciation, so it isn't comparable.
+
+### One Zetaris semantic layer
+
+A Unified Semantic Layer (`causeway.retail_usl`) spans three sources: SEC EDGAR XBRL and submissions (33 live REST tables), the company_dns SIC hierarchy, and BLS producer price indexes. Its tables are `sector_class`, `company`, `financial_fact`, `annual_financials` and `price_index`. The `edgar.margin_change` view computes every year-over-year change from a single 10-K, because Dollar Tree's restated cost of sales would otherwise fake an 8-point jump. Six `REGISTER DQ` rules run with `RUN DQ` and found 0 invalid records. Platform findings are in [`docs/zetaris-findings.md`](docs/zetaris-findings.md).
+
+### The Critic gate
+
+A finding is approved only when both passes approve it:
+
+  * Deterministic: every cited query is re-executed in Zetaris and must return identical rows. Every number must be a World Model fact from those rows, its percentage, a same-measure difference, or a peer median. Rounding 4.64 to 4 fails.
+  * Methodology: Nemotron Ultra reviews each finding against a checklist covering peer cherry-picking, restatements, price-index units, year-end versus intra-year claims, and causal wording.
+
+Rejections return to the Investigator with the specific fix. H-MEM records them as lessons (confidence 0.9) and approved findings as patterns (0.75), retrieved with a hybrid score and a 0.35 threshold.
+
+### Validation and safety boundaries
+
+  * SQL is read-only by construction: only `SELECT` and `WITH` are accepted, and DDL and DML are refused before they reach Zetaris.
+  * A finding whose methodology review fails or times out is never approved.
+  * Unapproved findings never appear as conclusions; the memo lists them under Open questions.
+  * Nightshift's exact-match cache is keyed per run, so a stale answer can't be replayed as live agent work.
+  * Hung models fall back between Ultra and Lightning, and transient Nightshift states (`cloud_busy`, DNS drops, engine restarts) are waited out instead of failing the run.
+  * Keys live in `.env` (gitignored) and in Nightshift. The SEC contact email is injected at run time and never committed.
+  * This is historical analysis of public filings, not investment advice.
+
+## Project layout
+
+```text
+causeway/
+  orchestrator.py          # recall → plan → investigate ⇄ critic → report → learn
+  agents.py                # Planner, Investigator, Reporter prompts and JSON contracts
+  critic.py                # recompute, number grounding, methodology review
+  generator.py             # Meterless Nightshift provider, receipts, fallbacks
+  zetaris_client.py        # Zetaris JDBC client
+  tools.py                 # read-only SQL tool and schema guide
+  engines/
+    world_model.py         # stable IDs, append-only log, ingest, read surface
+    hmem.py                # tiers, hybrid retrieval, trust ledger, mining
+zetaris_sql/
+  sources/                 # EDGAR, SIC and PPI source tables, margin_change view
+  usl/                     # Unified Semantic Layer DDL
+  dq/                      # DQ rules and cross-row checks
+scripts/                   # SQL runner, EDGAR generator, PPI fetch, replay tools
+tests/                     # 27 tests: engines, Critic grounding, generator resilience
+web/                       # Pavilion dashboard and the recorded runs it replays
+runs/example/              # full logs of the Target and Best Buy runs
+docs/
+  architecture/            # Pavilion architecture (PNG, SVG, .excalidraw)
+  zetaris-findings.md      # what we learned about the platform
+SETUP.md                   # Zetaris, Nightshift and NVIDIA setup
 ```
 
-## Limits and next steps
+## AI assistance
 
-- A full run takes 50-60 minutes, and most of that is Nemotron Ultra calls that hang until the 180 s timeout. Model working time is about 15 minutes. Streaming responses would cut the hangs.
-- The Investigator sometimes rounds numbers, which the Critic correctly rejects. The "cite numbers exactly" lesson exists in memory, but it ranked below the recall threshold for Best Buy.
-- Seven retailers in one sector; the USL generator takes any company list from `zetaris_sql/universe.json`.
-- Historical analysis of public filings. Not investment advice.
+NVIDIA Nemotron is called at runtime through Meterless Nightshift: Nemotron 3.5 Lightning 30B for planning, and Nemotron 3 Ultra 550B for investigation, critique, reporting and memory mining. Claude Code assisted with implementation, testing, the dashboard, the architecture diagram and this documentation.
+
+## License
+
+No license has been selected and this repository has no `LICENSE` file. Permission to reuse the code has not been specified.
