@@ -5,330 +5,456 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pavilion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f4f4f8; --panel: #ffffff; --ink: #15151f; --muted: #6e6f80; --line: #e7e6ef; --soft: #f7f6fb;
-  --accent: #6d4aff; --accent-2: #9b7bff; --accent-soft: #efeaff; --ok: #10a36f; --ok-soft: #e4f6ee; --bad: #e5484d; --bad-soft: #fdecec;
-  --warn: #b7791f; --warn-soft: #fdf3e1; --code: #f5f4fa; --side: #ffffff; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
-  --shadow: 0 1px 2px rgba(21,21,31,.04), 0 8px 24px rgba(21,21,31,.06);
+  color-scheme: light;
+  --page: #f4f3ef; --surface: #fcfcfb; --surface-2: #f0efeb; --surface-3: #e8e7e1;
+  --ink: #0b0b0b; --ink-2: #52514e; --muted: #7d7b75; --grid: #e1e0d9; --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1); --border-strong: rgba(11, 11, 11, 0.22);
+  --s1: #2a78d6; --s1-wash: rgba(42, 120, 214, 0.1);
+  --good: #0ca30c; --good-text: #006300; --good-wash: rgba(12, 163, 12, 0.08);
+  --critical: #d03b3b; --critical-text: #b42727; --critical-wash: rgba(208, 59, 59, 0.07);
+  --warning: #fab219; --warning-wash: rgba(250, 178, 25, 0.12);
+  --btn-ink: #0b0b0b; --btn-ink-text: #fcfcfb;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace; --radius: 8px;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0e0e14; --panel: #17171f; --ink: #f0f0f5; --muted: #9a9bb0; --line: #26263a; --soft: #1c1c27;
-  --accent: #8f74ff; --accent-2: #b39dff; --accent-soft: #241e45; --ok: #3dd68c; --ok-soft: #12291f; --bad: #ff6b6f; --bad-soft: #351719;
-  --warn: #f0b952; --warn-soft: #2e2412; --code: #1f1f2b; --side: #13131a; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25); } }
+  color-scheme: dark; --page: #0f0f0e; --surface: #1a1a19; --surface-2: #222220; --surface-3: #2c2c2a;
+  --ink: #f0efec; --ink-2: #c3c2b7; --muted: #8f8d86; --grid: #2c2c2a; --axis: #45443f;
+  --border: rgba(255, 255, 255, 0.1); --border-strong: rgba(255, 255, 255, 0.22);
+  --s1: #3987e5; --s1-wash: rgba(57, 135, 229, 0.14); --good-text: #0ca30c; --good-wash: rgba(12, 163, 12, 0.12);
+  --critical-text: #e66767; --critical-wash: rgba(208, 59, 59, 0.14); --btn-ink: #f0efec; --btn-ink-text: #0f0f0e; } }
 :root[data-theme="dark"] {
-  --bg: #0e0e14; --panel: #17171f; --ink: #f0f0f5; --muted: #9a9bb0; --line: #26263a; --soft: #1c1c27;
-  --accent: #8f74ff; --accent-2: #b39dff; --accent-soft: #241e45; --ok: #3dd68c; --ok-soft: #12291f; --bad: #ff6b6f; --bad-soft: #351719;
-  --warn: #f0b952; --warn-soft: #2e2412; --code: #1f1f2b; --side: #13131a; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25); }
+  color-scheme: dark; --page: #0f0f0e; --surface: #1a1a19; --surface-2: #222220; --surface-3: #2c2c2a;
+  --ink: #f0efec; --ink-2: #c3c2b7; --muted: #8f8d86; --grid: #2c2c2a; --axis: #45443f;
+  --border: rgba(255, 255, 255, 0.1); --border-strong: rgba(255, 255, 255, 0.22);
+  --s1: #3987e5; --s1-wash: rgba(57, 135, 229, 0.14); --good-text: #0ca30c; --good-wash: rgba(12, 163, 12, 0.12);
+  --critical-text: #e66767; --critical-wash: rgba(208, 59, 59, 0.14); --btn-ink: #f0efec; --btn-ink-text: #0f0f0e; }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 14.5px/1.5 Inter, -apple-system, "Segoe UI", sans-serif; }
-.app { display: grid; grid-template-columns: 248px minmax(0, 1fr); min-height: 100vh; }
-aside.side { background: var(--side); border-right: 1px solid var(--line); padding: 22px 16px; display: flex; flex-direction: column; gap: 22px; position: sticky; top: 0; height: 100vh; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -.02em; }
-.logo .mark { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #c06bff); display: grid; place-items: center; color: #fff; font-size: 16px; }
-.nav-label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 8px 6px; }
-.nav button { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; font: inherit; color: var(--muted); background: none; border: 0; padding: 8px 10px; border-radius: 9px; cursor: pointer; }
-.nav button:hover { background: var(--soft); color: var(--ink); }
-.nav button.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
-.nav .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: .5; }
-.run-card { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; cursor: pointer; background: var(--panel); }
-.run-card.on { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-.run-card b { display: block; font-size: 13.5px; } .run-card span { font-size: 12px; color: var(--muted); }
-.side-foot { margin-top: auto; font-size: 12px; color: var(--muted); line-height: 1.6; }
-.side-foot b { color: var(--ink); font-weight: 600; }
-main { padding: 22px 28px 40px; min-width: 0; }
-.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.crumbs { font-size: 13px; color: var(--muted); }
-.badge { font-size: 12px; font-weight: 600; color: var(--warn); background: var(--warn-soft); padding: 3px 10px; border-radius: 99px; }
-.controls { display: flex; gap: 8px; align-items: center; }
-.btn { font: inherit; font-weight: 600; border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 8px 14px; border-radius: 10px; cursor: pointer; }
-.btn.primary { background: linear-gradient(135deg, var(--accent), #8a5cff); color: #fff; border-color: transparent; box-shadow: 0 6px 16px rgba(109,74,255,.3); min-width: 108px; }
-select { font: inherit; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 10px; padding: 7px 8px; }
-.ask { margin-top: 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; box-shadow: var(--shadow); display: flex; gap: 14px; align-items: center; }
-.ask .q { font-size: 19px; font-weight: 650; letter-spacing: -.01em; flex: 1; }
-.ask .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 700; flex: none; }
-.progress { height: 4px; background: var(--line); border-radius: 4px; overflow: hidden; margin-top: 12px; }
-.progress div { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), #c06bff); transition: width .3s; }
-.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
-.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow); }
-.kpi .l { font-size: 12px; color: var(--muted); font-weight: 500; }
-.kpi .n { font-size: 26px; font-weight: 750; letter-spacing: -.02em; margin-top: 4px; font-variant-numeric: tabular-nums; }
-.kpi .s { font-size: 12px; color: var(--muted); }
-.kpi.hero { background: linear-gradient(135deg, var(--accent), #9a55ff); color: #fff; border-color: transparent; }
-.kpi.hero .l, .kpi.hero .s { color: rgba(255,255,255,.8); }
-.grid2 { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px; margin-top: 16px; }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); min-width: 0; }
-.card-h { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--line); }
-.card-h h2 { font-size: 14px; margin: 0; font-weight: 650; }
-.card-h .sub { font-size: 12px; color: var(--muted); }
-.chart { padding: 10px 18px 16px; }
-#timeline { list-style: none; margin: 0; padding: 6px 0; max-height: 560px; overflow-y: auto; }
-#timeline li { padding: 9px 18px; border-left: 3px solid transparent; animation: in .35s ease; }
-#timeline li.call { padding: 1px 18px 1px 34px; color: var(--muted); font-size: 12px; font-family: var(--mono); }
-#timeline li.key { border-left-color: var(--accent); } #timeline li.good { border-left-color: var(--ok); } #timeline li.badl { border-left-color: var(--bad); }
-@keyframes in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-.who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--accent); margin-right: 6px; }
-.t { float: right; color: var(--muted); font-size: 11.5px; font-family: var(--mono); }
-.chip { font-family: var(--mono); font-size: 11.5px; background: var(--accent-soft); color: var(--accent); border: 0; padding: 1px 7px; border-radius: 6px; cursor: pointer; }
-.pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 9px; border-radius: 99px; margin: 2px 4px 2px 0; }
-.pill.ok { background: var(--ok-soft); color: var(--ok); } .pill.bad { background: var(--bad-soft); color: var(--bad); }
-.tabs { display: flex; gap: 4px; padding: 10px 12px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
-.tabs button { font: inherit; font-weight: 500; border: 0; background: none; color: var(--muted); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
-.tabs button.on { background: var(--accent-soft); color: var(--accent); font-weight: 650; }
-.pane { padding: 16px 18px; max-height: 560px; overflow-y: auto; }
-.item { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; background: var(--panel); }
-.item.ok { border-left: 4px solid var(--ok); } .item.bad { border-left: 4px solid var(--bad); }
-.reason { color: var(--bad); font-size: 13px; margin-top: 6px; } .fix { font-size: 13px; margin-top: 6px; color: var(--muted); } .fix b { color: var(--ink); }
-.memo h3 { font-size: 15px; margin: 16px 0 6px; } .memo p { margin: 6px 0; }
-.memo table, .rows { border-collapse: collapse; font-size: 13px; margin: 8px 0; }
-.memo td, .memo th, .rows td, .rows th { border: 1px solid var(--line); padding: 5px 9px; text-align: left; }
-.rows { font-family: var(--mono); font-size: 12px; }
-pre { background: var(--code); padding: 12px 14px; border-radius: 10px; overflow-x: auto; font-size: 12.5px; white-space: pre-wrap; font-family: var(--mono); }
-.muted { color: var(--muted); } .small { font-size: 13px; }
-h3.sec { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 0 8px; }
-.bar { height: 6px; border-radius: 4px; background: linear-gradient(90deg, var(--accent), #c06bff); display: inline-block; vertical-align: middle; }
-.mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 12px; }
-.mini div { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; } .mini b { font-size: 20px; display: block; }
-#drawer { position: fixed; right: 0; top: 0; bottom: 0; width: min(660px, 100%); background: var(--panel); border-left: 1px solid var(--line); box-shadow: -20px 0 40px rgba(0,0,0,.15); transform: translateX(105%); transition: transform .25s; z-index: 10; overflow-y: auto; padding: 22px; }
-#drawer.open { transform: none; }
-.empty { color: var(--muted); padding: 24px 4px; text-align: center; }
-@media (max-width: 1180px) { .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 900px) { .app { grid-template-columns: 1fr; } aside.side { position: static; height: auto; } .grid2 { grid-template-columns: 1fr; } main { padding: 16px; } .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+html, body { margin: 0; padding: 0; }
+body { background: var(--page); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; }
+.mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: -0.01em; }
+.muted { color: var(--muted); } .ink2 { color: var(--ink-2); } .small { font-size: 12.5px; } .num { font-variant-numeric: tabular-nums; }
+.row { display: flex; align-items: center; gap: 8px; } .spread { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+
+.shell { display: grid; grid-template-columns: 236px minmax(0, 1fr); min-height: 100vh; }
+.rail { position: sticky; top: 0; height: 100vh; border-right: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; padding: 18px 14px 14px; }
+.wordmark { display: flex; align-items: center; gap: 10px; padding: 2px 8px 18px; }
+.wordmark-name { font-weight: 600; font-size: 17px; letter-spacing: -0.01em; }
+.wordmark-sub { font-size: 11px; color: var(--muted); line-height: 1.2; }
+.nav { display: flex; flex-direction: column; gap: 1px; }
+.nav-label { font-size: 11px; color: var(--muted); padding: 14px 10px 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+.nav button { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; border: 0; background: none; color: var(--ink-2); cursor: pointer; text-align: left; width: 100%; }
+.nav button:hover { background: var(--surface-2); color: var(--ink); }
+.nav button.active { background: var(--surface-3); color: var(--ink); font-weight: 500; }
+.nav svg { flex: none; opacity: 0.85; }
+.nav-count { margin-left: auto; font-size: 11.5px; font-variant-numeric: tabular-nums; color: var(--ink-2); background: var(--surface-2); border-radius: 10px; padding: 0 7px; }
+.nav button.active .nav-count { background: var(--surface); }
+.rail-foot { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+.who { border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; display: flex; flex-direction: column; gap: 2px; }
+.who-name { font-weight: 500; } .who-org { font-size: 12px; color: var(--ink-2); }
+
+.main { min-width: 0; display: flex; flex-direction: column; }
+.topbar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 16px; height: 52px; padding: 0 32px; background: color-mix(in srgb, var(--page) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+.topbar-title { font-weight: 500; }
+.topbar-meta { margin-left: auto; display: flex; align-items: center; gap: 18px; font-size: 12.5px; color: var(--ink-2); }
+.content { padding: 28px 32px 64px; max-width: 1480px; width: 100%; }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); display: inline-block; }
+.live-dot.off { background: var(--muted); }
+.live-dot.pulse { animation: pulse 1.6s ease-out infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(12, 163, 12, 0.45); } 100% { box-shadow: 0 0 0 7px rgba(12, 163, 12, 0); } }
+
+.page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 22px; flex-wrap: wrap; }
+.eyebrow { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+h1 { font-size: 24px; font-weight: 600; letter-spacing: -0.015em; margin: 0; line-height: 1.2; }
+h2 { font-size: 15px; font-weight: 600; margin: 0; letter-spacing: -0.005em; }
+.lede { color: var(--ink-2); max-width: 780px; margin: 6px 0 0; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); min-width: 0; }
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 14px 16px 0; }
+.card-head .sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.card-body { padding: 14px 16px 16px; }
+.card-foot { border-top: 1px solid var(--border); padding: 10px 16px; font-size: 12.5px; color: var(--ink-2); }
+.grid { display: grid; gap: 16px; } .g-main { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); } .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.stat { padding: 16px 18px; border-left: 1px solid var(--border); min-width: 0; }
+.stat:first-child { border-left: 0; }
+.stat-label { font-size: 12.5px; color: var(--ink-2); display: flex; align-items: center; gap: 6px; }
+.stat-value { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin-top: 6px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat-unit { font-size: 14px; font-weight: 400; color: var(--ink-2); margin-left: 4px; letter-spacing: 0; }
+.stat-note { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.delta-good { color: var(--good-text); } .delta-bad { color: var(--critical-text); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 32px; padding: 0 12px; border-radius: 6px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); cursor: pointer; font-weight: 500; font-size: 13px; white-space: nowrap; }
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--btn-ink); color: var(--btn-ink-text); border-color: var(--btn-ink); }
+.btn.primary:hover { opacity: 0.88; }
+.btn.sm { height: 26px; padding: 0 9px; font-size: 12.5px; }
+.seg { display: inline-flex; border: 1px solid var(--border-strong); border-radius: 6px; overflow: hidden; }
+.seg button { border: 0; background: transparent; height: 28px; padding: 0 11px; cursor: pointer; font-size: 12.5px; color: var(--ink-2); border-left: 1px solid var(--border); }
+.seg button:first-child { border-left: 0; }
+.seg button[aria-pressed="true"] { background: var(--surface-3); color: var(--ink); font-weight: 500; }
+
+.badge { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 8px; border-radius: 11px; font-size: 12px; font-weight: 500; white-space: nowrap; border: 1px solid var(--border); background: var(--surface); color: var(--ink); }
+.badge.plain { background: var(--surface-2); border-color: transparent; color: var(--ink-2); }
+.badge.critical { background: var(--critical-wash); border-color: transparent; }
+.badge.good { background: var(--good-wash); border-color: transparent; }
+.badge.warning { background: var(--warning-wash); border-color: transparent; }
+
+.table-wrap { overflow-x: auto; }
+table.t { width: 100%; border-collapse: collapse; font-size: 13px; }
+.t th { text-align: left; font-weight: 500; color: var(--muted); font-size: 12px; padding: 8px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.t td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.t tr:last-child td { border-bottom: 0; }
+.t td.num, .t th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.t tbody tr.link { cursor: pointer; } .t tbody tr.link:hover td { background: var(--surface-2); }
+.t .title { font-weight: 500; } .t .meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.kv { display: grid; grid-template-columns: minmax(130px, auto) minmax(0, 1fr); gap: 8px 16px; font-size: 13px; margin: 0; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.qid { font-family: var(--mono); font-size: 12px; color: var(--s1); border: 0; background: none; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--s1) 35%, transparent); text-underline-offset: 2px; }
+.callout { border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; display: flex; gap: 10px; background: var(--surface); font-size: 13px; }
+.callout.critical { background: var(--critical-wash); border-color: transparent; }
+.callout.good { background: var(--good-wash); border-color: transparent; }
+.callout svg { flex: none; margin-top: 2px; }
+.empty { padding: 40px 16px; text-align: center; color: var(--muted); }
+
+.activity { list-style: none; margin: 0; padding: 0; max-height: 520px; overflow-y: auto; }
+.activity li { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 10px; padding: 10px 16px; border-top: 1px solid var(--border); animation: rise 160ms ease-out; }
+.activity li:first-child { border-top: 0; }
+.activity .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--axis); margin-top: 7px; }
+.activity .dot.bad { background: var(--critical); } .activity .dot.good { background: var(--good); } .activity .dot.info { background: var(--s1); }
+.activity .a-title { font-size: 13.5px; } .activity .a-meta { font-size: 12px; color: var(--muted); margin-top: 1px; }
+@keyframes rise { from { transform: translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.chart svg { display: block; width: 100%; overflow: visible; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.key-box { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.key-line { width: 14px; height: 0; border-top: 2px dashed var(--ink-2); display: inline-block; }
+.progress { height: 2px; background: var(--border); }
+.progress div { height: 100%; width: 0; background: var(--ink); transition: width .25s; }
+
+.memo { font-size: 14px; color: var(--ink); max-width: 860px; }
+.memo h3 { font-size: 13.5px; font-weight: 600; margin: 18px 0 6px; }
+.memo p { margin: 6px 0; color: var(--ink-2); } .memo li { color: var(--ink-2); margin: 3px 0; }
+.memo table { border-collapse: collapse; font-size: 13px; margin: 8px 0; }
+.memo td, .memo th { border-bottom: 1px solid var(--border); padding: 7px 12px 7px 0; text-align: left; }
+.memo th { color: var(--muted); font-weight: 500; font-size: 12px; }
+
+.scrim { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.28); z-index: 30; display: none; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(720px, 100vw); z-index: 31; background: var(--surface); border-left: 1px solid var(--border); display: none; flex-direction: column; animation: slide 160ms ease-out; }
+.open .scrim { display: block; } .open .drawer { display: flex; }
+@keyframes slide { from { transform: translateX(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+.drawer-head { padding: 18px 22px 14px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: flex-start; }
+.drawer-body { padding: 18px 22px 28px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+pre { background: var(--surface-2); padding: 12px 14px; border-radius: 6px; overflow-x: auto; font-family: var(--mono); font-size: 12px; white-space: pre-wrap; margin: 0; color: var(--ink-2); }
+.x { border: 0; background: none; cursor: pointer; padding: 4px; color: var(--ink-2); margin-left: auto; border-radius: 4px; }
+.x:hover { background: var(--surface-2); }
+
+@media (max-width: 1180px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat:nth-child(3) { border-left: 0; } .stat:nth-child(n + 3) { border-top: 1px solid var(--border); } .g-main, .g2 { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 900px) { .shell { grid-template-columns: minmax(0, 1fr); } .rail { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 10px 16px; gap: 8px; border-right: 0; border-bottom: 1px solid var(--border); } .wordmark { padding: 0 8px 0 0; } .nav { flex-direction: row; overflow-x: auto; width: 100%; } .nav-label, .rail-foot { display: none; } .topbar { padding: 0 16px; } .content { padding: 20px 16px 48px; } .topbar-meta .hide-sm { display: none; } }
+@media (max-width: 560px) { .stats { grid-template-columns: minmax(0, 1fr); } .stat { border-left: 0; border-top: 1px solid var(--border); } .stat:first-child { border-top: 0; } }
 </style>
 </head>
 <body>
-<div class="app">
-  <aside class="side">
-    <div class="logo"><div class="mark">P</div>Pavilion</div>
-    <div>
-      <div class="nav-label">Investigations</div>
-      <div id="runs" style="display:flex;flex-direction:column;gap:8px"></div>
+<div class="shell" id="shell">
+  <aside class="rail">
+    <div class="wordmark">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="var(--ink)"/><path d="M8 20V8h6.5a4 4 0 0 1 0 8H8" fill="none" stroke="var(--surface)" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="1.6" fill="var(--surface)"/></svg>
+      <div><div class="wordmark-name">Pavilion</div><div class="wordmark-sub">Explanations an analyst<br>can audit</div></div>
     </div>
-    <div class="nav">
-      <div class="nav-label">Views</div>
-      <div id="tabs-side"></div>
-    </div>
-    <div class="side-foot">
-      <b>Data</b> Zetaris semantic layer<br>
-      <b>Models</b> NVIDIA Nemotron via Meterless Nightshift<br>
-      <b>Engines</b> World Model · H-MEM
+    <nav class="nav" id="nav"></nav>
+    <div class="rail-foot">
+      <div class="who"><span class="muted small">Analyst</span><span class="who-name">Credit research</span><span class="who-org">US big-box retail coverage</span></div>
     </div>
   </aside>
-  <main>
-    <div class="top">
-      <div><div class="crumbs">Investigations / <span id="crumb"></span></div></div>
-      <div class="controls">
-        <span class="badge">Replay of a recorded run · real logs</span>
-        <select id="speed" aria-label="Speed"><option value="900" selected>1×</option><option value="450">2×</option><option value="180">5×</option></select>
-        <button class="btn" id="skip">Show all</button>
-        <button class="btn primary" id="play">▶ Play</button>
+  <div class="main">
+    <header class="topbar">
+      <span class="topbar-title" id="topbar-title">Overview</span>
+      <div class="topbar-meta">
+        <span class="hide-sm mono" id="meta-run"></span>
+        <span class="hide-sm" id="meta-receipts"></span>
+        <span class="row"><i class="live-dot" id="live"></i><span id="live-label">Recorded run</span></span>
       </div>
-    </div>
-    <div class="ask"><div class="avatar">A</div><div class="q" id="question"></div></div>
+    </header>
     <div class="progress"><div id="prog"></div></div>
-    <div class="kpis" id="kpis"></div>
-    <div class="grid2">
-      <section class="card">
-        <div class="card-h"><h2>Agent timeline</h2><span class="sub" id="tl-sub">live</span></div>
-        <ol id="timeline"></ol>
-      </section>
-      <section class="card">
-        <div class="tabs" id="tabs"></div>
-        <div class="pane" id="pane"></div>
-      </section>
-    </div>
-    <section class="card" style="margin-top:16px">
-      <div class="card-h"><h2>Gross margin change vs peers</h2><span class="sub" id="chart-sub"></span></div>
-      <div class="chart" id="chart"></div>
-    </section>
-  </main>
+    <div class="content" id="content"></div>
+  </div>
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer"></aside>
 </div>
-<aside id="drawer"></aside>
 <script src="replay_data.js"></script>
 <script>
 const D = window.PAVILION;
-const LABELS = [["Target", "first run · empty memory"], ["Best Buy", "second run · memory recalled"]];
-const TABS = ["Plan", "Critic", "Memo", "Memory", "Evidence", "Sponsor tech"];
-let run = D.runs[0], idx = 0, timer = null, tab = "Plan", shown = new Set();
-
+const I = {
+  overview: '<path d="M2 2h5v5H2zM9 2h5v5H9zM2 9h5v5H2zM9 9h5v5H9z"/>',
+  company: '<path d="M2 14V7l4-3 4 3v7M10 14V9h4v5M5 14v-3h2v3"/>',
+  critic: '<path d="M8 1.5 2.5 4v4c0 3.2 2.4 5.6 5.5 6.5 3.1-.9 5.5-3.3 5.5-6.5V4L8 1.5z"/><path d="m5.5 8 1.7 1.7L10.7 6"/>',
+  evidence: '<ellipse cx="8" cy="3.5" rx="5.5" ry="2"/><path d="M2.5 3.5v9c0 1.1 2.5 2 5.5 2s5.5-.9 5.5-2v-9M2.5 8c0 1.1 2.5 2 5.5 2s5.5-.9 5.5-2"/>',
+  memory: '<path d="M8 2.5a5.5 5.5 0 1 0 5.5 5.5"/><path d="M8 5v3l2 1.5M11 2h3v3"/>',
+  stack: '<path d="m8 1.5 6.5 3.5L8 8.5 1.5 5 8 1.5z"/><path d="m1.5 8 6.5 3.5L14.5 8M1.5 11l6.5 3.5 6.5-3.5"/>',
+  arch: '<path d="M2 2h12v4H2zM2 10h5v4H2zM9 10h5v4H9zM4.5 6v4M11.5 6v4"/>',
+  alert: '<path d="M8 2 1.5 13.5h13L8 2z"/><path d="M8 6.5v3.2M8 11.6v.1"/>',
+  check: '<path d="m3 8.5 3 3 7-7"/>',
+  close: '<path d="m3.5 3.5 9 9M12.5 3.5l-9 9"/>',
+};
+const icon = (n, s = 16) => `<svg width="${s}" height="${s}" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
-const short = m => (m || "").replace("nvidia/", "").replace("-550b-a55b", "").replace("-30b-a3b", "");
+const fmt = v => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(2);
 const fmtT = t => { const m = Math.floor(t / 60), s = Math.floor(t % 60); return `${m}:${String(s).padStart(2, "0")}`; };
-const chips = text => esc(text).replace(/\bq_[0-9a-f]{10}\b/g, q => `<button class="chip" data-q="${q}">${q}</button>`);
-const fmt = v => (v > 0 ? "+" : "") + v.toFixed(2);
+const short = m => (m || "").replace("nvidia/", "").replace("-550b-a55b", "").replace("-30b-a3b", "");
+const qids = text => esc(text).replace(/\bq_[0-9a-f]{10}\b/g, q => `<button class="qid" data-q="${q}">${q}</button>`);
+const qbtn = q => `<button class="qid" data-q="${q}">${q}</button>`;
 
+let ri = 0, run = D.runs[0], page = "overview", idx = 0, timer = null;
+
+// ------------------------------------------------------------ replay state
+const visible = () => run.events.slice(0, idx);
+const has = (ev, round) => visible().some(e => e.event === ev && (round == null || e.round == round));
+const decomp = () => { const f = visible().filter(e => e.event === "findings"); return f.length ? f[f.length - 1].decomposition : null; };
+const verdicts = () => visible().filter(e => e.event === "verdict");
+const finalRound = () => run.rounds[run.rounds.length - 1];
+
+function play() {
+  if (timer) { clearTimeout(timer); timer = null; return renderAll(); }
+  if (idx >= run.events.length) idx = 0;
+  const tick = () => {
+    if (idx >= run.events.length) { timer = null; return renderAll(); }
+    idx++; const e = run.events[idx - 1];
+    renderAll();
+    timer = setTimeout(tick, e.event === "model_call" || e.event === "fallback" ? 120 : 650);
+  };
+  timer = setTimeout(tick, 50); renderAll();
+}
+function showAll() { clearTimeout(timer); timer = null; idx = run.events.length; renderAll(); }
+
+// ------------------------------------------------------------ shell
+const PAGES = [
+  ["Investigation", [["overview", "Overview", "overview"]]],
+  ["Assurance", [["critic", "Critic", "critic"], ["evidence", "Evidence", "evidence"], ["memory", "Memory", "memory"]]],
+  ["Platform", [["stack", "Sponsor stack", "stack"], ["arch", "Architecture", "arch"]]],
+];
+function renderNav() {
+  const rejected = verdicts().reduce((n, v) => n + v.rejected.length, 0);
+  const queries = visible().filter(e => e.event === "query").length;
+  const counts = {critic: rejected || "", evidence: queries || "", memory: (run.memory.recalled.memories.length || "")};
+  let h = `<div class="nav-label">Runs</div>` + D.runs.map((r, i) => `<button data-run="${i}" class="${i === ri ? "active" : ""}">${icon("company")}${esc(r.plan.company)}<span class="nav-count">${i === 0 ? "1st" : "2nd"}</span></button>`).join("");
+  for (const [label, items] of PAGES) {
+    h += `<div class="nav-label">${label}</div>` + items.map(([id, name, ic]) => `<button data-page="${id}" class="${id === page ? "active" : ""}">${icon(ic)}${name}${counts[id] ? `<span class="nav-count">${counts[id]}</span>` : ""}</button>`).join("");
+  }
+  $("#nav").innerHTML = h;
+}
+function renderTop() {
+  const titles = {overview: "Overview", critic: "Critic", evidence: "Evidence", memory: "Memory", stack: "Sponsor stack", arch: "Architecture"};
+  $("#topbar-title").textContent = titles[page];
+  $("#meta-run").textContent = "run " + run.id;
+  const receipts = visible().filter(e => e.event === "model_call").length;
+  $("#meta-receipts").textContent = `${receipts} Nemotron calls · ${receipts} receipts`;
+  const playing = !!timer, done = idx >= run.events.length;
+  $("#live").className = "live-dot" + (playing ? " pulse" : done ? "" : " off");
+  $("#live-label").textContent = playing ? "Replaying" : done ? "Complete" : "Paused";
+  $("#prog").style.width = done && !playing ? "0" : (100 * idx / run.events.length) + "%";
+}
+function head(eyebrow, title, lede, actions = "") {
+  return `<div class="page-head"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1>${lede ? `<p class="lede">${lede}</p>` : ""}</div><div class="row">${actions}</div></div>`;
+}
+const replayBtns = () => `<button class="btn" id="b-all">Show all</button><button class="btn primary" id="b-play">${timer ? "Pause" : idx >= run.events.length ? "Replay run" : "Play"}</button>`;
+
+// ------------------------------------------------------------ pages
+function stat(label, value, unit, note, ic) {
+  return `<div class="stat"><div class="stat-label">${ic ? icon(ic, 14) : ""}${label}</div><div class="stat-value">${value}${unit ? `<span class="stat-unit">${unit}</span>` : ""}</div><div class="stat-note">${note}</div></div>`;
+}
+function overview() {
+  const d = decomp(), done = has("memo"), P = run.plan, v = verdicts(), last = v[v.length - 1];
+  const companyShare = d && Math.abs(d.company_specific_pts) > Math.abs(d.peer_median_change_pts);
+  let h = head(`Investigation · ${esc(P.company)} · ${esc(P.focus_period)}`, esc(run.question),
+    `Pavilion plans the investigation, queries the Zetaris semantic layer, and only states a number after the Critic re-runs the query behind it.`, replayBtns());
+  h += `<div class="stats">
+    ${stat(`${esc(P.ticker)} gross margin change`, done ? fmt(d.company_change_pts) : "—", done ? "pts" : "", "both years from one 10-K")}
+    ${stat("Peer median", done ? fmt(d.peer_median_change_pts) : "—", done ? "pts" : "", `${(P.peers || []).length} peers · ${esc((P.peers || []).join(", "))}`)}
+    ${stat("Company-specific", done ? fmt(d.company_specific_pts) : "—", done ? "pts" : "", done ? `<span class="${companyShare ? "delta-bad" : ""}">${companyShare ? "Mostly the company, not the sector" : "Mostly sector-wide"}</span>` : "after the Critic approves", "")}
+    ${stat("Critic", last ? `${last.approved.length}/${last.approved.length + last.rejected.length}` : "—", last ? "approved" : "", last ? `round ${last.round} · ${run.stats.recomputes} queries re-run in Zetaris` : "waiting for findings", "critic")}
+  </div>`;
+  h += `<div class="grid g-main" style="margin-top:16px">
+    <div class="stack">
+      <section class="card"><div class="card-head"><div><h2>Gross margin change vs peers</h2><div class="sub">percentage points, fiscal 2022 vs 2021 · edgar.margin_change</div></div>
+        <div class="legend"><span><i class="key-box" style="background:var(--s1)"></i>${esc(P.ticker)}</span><span><i class="key-box" style="background:var(--surface-3)"></i>Peers</span><span><i class="key-line"></i>Peer median</span></div></div>
+        <div class="card-body chart" id="chart">${chart()}</div></section>
+      <section class="card"><div class="card-head"><div><h2>Findings</h2><div class="sub">only approved findings reach the memo · click a row for the Critic's review</div></div></div>
+        <div class="card-body" style="padding:8px 4px 4px">${findingsTable()}</div></section>
+    </div>
+    <section class="card"><div class="card-head"><div><h2>Activity</h2><div class="sub">${visible().filter(e => eventLine(e)).length} agent steps · ${fmtT(run.stats.elapsed_s)} wall clock</div></div></div>
+      <ul class="activity" id="activity" style="margin-top:10px">${activity()}</ul></section>
+  </div>`;
+  h += `<section class="card" style="margin-top:16px"><div class="card-head"><div><h2>Analyst memo</h2><div class="sub">written by the Reporter from approved findings · every number links to its query</div></div></div>
+    <div class="card-body">${done ? `<div class="memo">${md(run.memo)}</div>` : `<div class="empty">The memo appears once the Critic has approved the findings.</div>`}</div></section>`;
+  return h;
+}
+function chart() {
+  const q = Object.values(run.queries).find(q => q.agent === "investigator" && q.columns.includes("ticker") && q.columns.some(c => c.includes("gross_margin_change")));
+  if (!q || !has("query")) return `<div class="empty">The peer comparison appears after the first Zetaris query.</div>`;
+  const ci = q.columns.indexOf("ticker"), vi = q.columns.findIndex(c => c.includes("gross_margin_change"));
+  const rows = q.rows.map(r => [r[ci], r[vi] * (Math.abs(r[vi]) < 1 ? 100 : 1)]).sort((a, b) => a[1] - b[1]);
+  const max = Math.ceil(Math.max(...rows.map(r => Math.abs(r[1])))), W = 760, L = 60, R = 70, rowH = 30, plotW = W - L - R;
+  const lo = -max, hi = Math.max(1, Math.ceil(Math.max(...rows.map(r => r[1])))), x = v => L + (v - lo) / (hi - lo) * plotW, H = rows.length * rowH + 28;
+  const med = decomp() ? decomp().peer_median_change_pts : null;
+  let s = "";
+  for (let t = lo; t <= hi; t++) s += `<line x1="${x(t)}" x2="${x(t)}" y1="0" y2="${H - 22}" stroke="var(--grid)"/><text x="${x(t)}" y="${H - 6}" font-size="11" fill="var(--muted)" text-anchor="middle">${t}</text>`;
+  s += `<line x1="${x(0)}" x2="${x(0)}" y1="0" y2="${H - 22}" stroke="var(--axis)"/>`;
+  rows.forEach(([t, v], i) => {
+    const y = 6 + i * rowH, me = t === run.plan.ticker, a = Math.min(x(0), x(v)), w = Math.abs(x(v) - x(0));
+    s += `<text x="${L - 10}" y="${y + 14}" font-size="12.5" text-anchor="end" fill="var(--ink${me ? "" : "-2"})" font-weight="${me ? 600 : 400}">${t}</text>
+      <rect x="${a}" y="${y + 3}" width="${Math.max(w, 1.5)}" height="16" rx="2" fill="${me ? "var(--s1)" : "var(--surface-3)"}"/>
+      <text x="${v < 0 ? x(0) + 6 : a + w + 6}" y="${y + 15}" font-size="11.5" text-anchor="start" fill="var(--ink-2)" font-family="IBM Plex Mono, monospace">${fmt(v)}</text>`;
+  });
+  if (med != null && has("findings")) s += `<line x1="${x(med)}" x2="${x(med)}" y1="0" y2="${H - 22}" stroke="var(--ink-2)" stroke-dasharray="3 3"/>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gross margin change by company">${s}</svg><div class="small muted" style="margin-top:8px">Source ${qbtn(q.id)} · ${q.row_count} rows from Zetaris</div>`;
+}
+function findingsTable() {
+  const rounds = run.rounds.filter(r => has("verdict", r.round));
+  if (!rounds.length) return `<div class="empty">Findings appear when the Critic gives its first verdict.</div>`;
+  const r = rounds[rounds.length - 1];
+  const all = [...r.critic.approved.map(f => [f, true]), ...r.critic.rejected.map(f => [f, false])].sort((a, b) => a[0].id.localeCompare(b[0].id));
+  return `<div class="table-wrap"><table class="t"><thead><tr><th>Status</th><th>Finding</th><th>Confidence</th><th>Evidence</th></tr></thead><tbody>
+    ${all.map(([f, ok]) => `<tr class="link" data-f="${r.round}:${f.id}"><td>${ok ? `<span class="badge good">${icon("check", 12)}Approved</span>` : `<span class="badge critical">${icon("alert", 12)}Unverified</span>`}</td>
+      <td><div class="title">${esc(f.statement.length > 150 ? f.statement.slice(0, 150) + "…" : f.statement)}</div><div class="meta">${esc(f.id)} · ${esc(f.hypothesis || "")} · ${esc(f.scope || "")}</div></td>
+      <td><span class="badge plain">${esc(f.confidence || "")}</span></td><td>${(f.evidence || []).map(qbtn).join("<br>")}</td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+function eventLine(e) {
+  switch (e.event) {
+    case "start": return ["info", "Question received", "analyst"];
+    case "retrieve": return [e.memories && e.memories.length ? "good" : "", e.memories && e.memories.length ? `Recalled ${e.memories.length} lessons from earlier investigations` : "No lessons in memory yet", "H-MEM"];
+    case "plan": return ["info", `Plan: ${e.plan.peers.length} peers, ${e.plan.hypotheses.length} hypotheses`, "planner · Nemotron Lightning"];
+    case "query": return ["", esc(e.purpose), `investigator · Zetaris · ${qbtn(e.query_id)} · ${e.rows} rows`];
+    case "findings": return ["info", `Investigator proposed ${e.findings.length} findings`, "investigator · Nemotron Ultra"];
+    case "recompute": return ["", `Critic re-ran ${e.requeried} cited queries: ${e.reproduced} identical`, "critic · Zetaris"];
+    case "verdict": return [e.rejected.length ? "bad" : "good", `Round ${e.round}: ${e.approved.length} approved, ${e.rejected.length} rejected`, "critic · Nemotron Ultra + deterministic checks"];
+    case "memo": return ["good", "Memo written from approved findings", "reporter · Nemotron Ultra"];
+    case "learn": return ["good", `Learned ${(e.learned || []).length} lessons`, "H-MEM"];
+    case "done": return ["good", `Investigation complete · ${e.rounds} Critic rounds`, "orchestrator"];
+  }
+  return null;
+}
+function activity() {
+  const items = visible().map(e => [e, eventLine(e)]).filter(x => x[1]).reverse();
+  if (!items.length) return `<li style="display:block"><div class="empty">Press Play to replay the run.</div></li>`;
+  return items.map(([e, [k, title, meta]]) => `<li><i class="dot ${k}"></i><div><div class="a-title">${title}</div><div class="a-meta">${fmtT(e.t)} · ${meta}</div></div></li>`).join("");
+}
+function criticPage() {
+  let h = head("Assurance", "Critic", "A finding is approved only when every cited query re-runs in Zetaris with identical rows, every number traces to those rows (a value, its percentage, a same-measure difference or a peer median), and a Nemotron Ultra review passes the methodology checklist.", replayBtns());
+  const rounds = run.rounds.filter(r => has("verdict", r.round));
+  const tot = rounds.reduce((n, r) => n + r.critic.rejected.length, 0);
+  h += `<div class="stats">${stat("Review rounds", rounds.length || "—", "", "up to 3")}${stat("Rejections", tot, "", "each sent back with a fix", "alert")}${stat("Queries re-run", run.stats.recomputes, "", "in the same Zetaris engine")}${stat("Final", rounds.length ? `${rounds[rounds.length - 1].critic.approved.length}/${rounds[rounds.length - 1].findings.length}` : "—", rounds.length ? "approved" : "", "unapproved findings stay out of the conclusions", "critic")}</div>`;
+  if (!rounds.length) return h + `<div class="card" style="margin-top:16px"><div class="empty">Verdicts appear when the replay reaches the Critic.</div></div>`;
+  for (const r of rounds) {
+    const all = [...r.critic.rejected.map(f => [f, false]), ...r.critic.approved.map(f => [f, true])];
+    h += `<section class="card" style="margin-top:16px"><div class="card-head"><div><h2>Round ${r.round}</h2><div class="sub">${r.critic.approved.length} approved · ${r.critic.rejected.length} rejected</div></div></div>
+      <div class="card-body" style="padding:8px 4px 4px"><div class="table-wrap"><table class="t"><thead><tr><th>Verdict</th><th>Finding</th><th>Why</th></tr></thead><tbody>
+      ${all.map(([f, ok]) => `<tr class="link" data-f="${r.round}:${f.id}"><td>${ok ? `<span class="badge good">${icon("check", 12)}Approved</span>` : `<span class="badge critical">${icon("alert", 12)}Rejected</span>`}</td>
+        <td style="max-width:420px"><div class="title">${esc(f.id)}</div><div class="meta">${esc(f.statement.slice(0, 140))}${f.statement.length > 140 ? "…" : ""}</div></td>
+        <td style="max-width:460px" class="small ink2">${ok ? "Recomputed, grounded and reviewed" : esc((f.critic.reasons[0] || "").slice(0, 200))}</td></tr>`).join("")}
+      </tbody></table></div></div></section>`;
+  }
+  return h;
+}
+function evidencePage() {
+  const qs = Object.values(run.queries).filter(q => q.agent === "investigator");
+  const ran = new Set(visible().filter(e => e.event === "query").map(e => e.query_id));
+  let h = head("Assurance", "Evidence", "Every SQL query the Investigator ran on the Zetaris semantic layer, read-only. Click one for the SQL and the rows behind each number.", replayBtns());
+  h += `<section class="card"><div class="card-body" style="padding:8px 4px 4px"><div class="table-wrap"><table class="t"><thead><tr><th>Query</th><th>Purpose</th><th class="num">Rows</th><th class="num">Zetaris time</th></tr></thead><tbody>
+    ${qs.filter(q => ran.has(q.id)).map(q => `<tr class="link" data-q="${q.id}"><td>${qbtn(q.id)}</td><td style="max-width:640px">${esc(q.purpose)}</td><td class="num">${q.row_count}</td><td class="num">${(q.elapsed_ms / 1000).toFixed(1)} s</td></tr>`).join("") || `<tr><td colspan="4"><div class="empty">No queries yet.</div></td></tr>`}
+  </tbody></table></div></div></section>`;
+  return h;
+}
+function memoryPage() {
+  const rec = run.memory.recalled, learned = run.memory.learned;
+  let h = head("Assurance", "Memory", "H-MEM turns the Critic's rejections into lessons and recalls them before the next plan. Retrieval uses the hybrid score (semantic, keyword, tag, domain, entity, layer, recency) with a 0.35 threshold.", replayBtns());
+  h += `<div class="grid g2"><section class="card"><div class="card-head"><div><h2>Recalled before planning</h2><div class="sub">${rec.memories.length} lessons above the threshold</div></div></div>
+    <div class="card-body" style="padding:8px 4px 4px">${rec.memories.length ? `<table class="t"><thead><tr><th>Lesson</th><th class="num">Score</th></tr></thead><tbody>${rec.memories.map(m => `<tr><td>${esc(m.content)}<div class="meta">${esc(m.layer)} · ${esc(m.domain)}</div></td><td class="num mono">${m.score.toFixed(3)}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">Memory was empty: the first investigation in this sector.</div>`}</div></section>
+    <section class="card"><div class="card-head"><div><h2>Learned after this run</h2><div class="sub">mined by Nemotron Ultra from the Critic's verdicts</div></div></div>
+    <div class="card-body" style="padding:8px 4px 4px">${has("learn") ? `<table class="t"><thead><tr><th>Source</th><th>Lesson</th></tr></thead><tbody>${learned.map(m => `<tr><td>${m.event === "user_correction" ? `<span class="badge critical">Rejection</span>` : `<span class="badge good">Approval</span>`}</td><td>${esc(m.content)}</td></tr>`).join("")}</tbody></table>` : `<div class="empty">Lessons appear when the run finishes.</div>`}</div></section></div>`;
+  return h;
+}
+function stackPage() {
+  const s = run.stats;
+  let h = head("Platform", "Sponsor stack", "Zetaris is the only data path, Meterless Nightshift is the only AI provider, and NVIDIA Nemotron runs every agent. The World Model and H-MEM engines are implemented from the Meterless specs.");
+  h += `<div class="stats">${stat("Zetaris queries", s.queries, "", "read-only SQL over JDBC")}${stat("Critic re-runs", s.recomputes, "", "same engine, identical rows")}${stat("Nightshift receipts", s.receipts, "", "one per model call")}${stat("World Model facts", run.world.facts ?? "—", "", "every row, with provenance")}</div>`;
+  h += `<div class="grid g2" style="margin-top:16px"><section class="card"><div class="card-head"><div><h2>Models</h2><div class="sub">NVIDIA Nemotron via Meterless Nightshift</div></div></div><div class="card-body" style="padding:8px 4px 4px"><table class="t"><thead><tr><th>Model</th><th>Role</th><th class="num">Calls</th></tr></thead><tbody>
+    ${Object.entries(s.by_model).map(([m, n]) => `<tr><td class="mono">${esc(m)}</td><td class="ink2">${m.includes("lightning") ? "Planner · fallback" : "Investigator · Critic · Reporter · H-MEM"}</td><td class="num">${n}</td></tr>`).join("")}</tbody></table></div></section>
+    <section class="card"><div class="card-head"><div><h2>Data-quality rules</h2><div class="sub">REGISTER DQ on the USL · RUN DQ: 0 invalid records</div></div></div><div class="card-body" style="padding:8px 4px 4px"><table class="t"><thead><tr><th>Rule</th><th>Table</th><th>Status</th></tr></thead><tbody>
+    ${D.dq.map(r => `<tr><td><div class="title mono">${esc(r.name)}</div><div class="meta">${esc(r.why)}</div></td><td class="mono small">${esc(r.table)}</td><td><span class="badge good">${icon("check", 12)}0 invalid</span></td></tr>`).join("")}</tbody></table></div></section></div>`;
+  return h;
+}
+function archPage() {
+  return head("Platform", "Architecture", "Inputs flow through the Zetaris semantic layer to the agents; deterministic engines decide whether a number is real.") +
+    `<section class="card"><div class="card-body"><img src="architecture.png" alt="Pavilion architecture: inputs, Zetaris data layer, Nemotron agents via Nightshift, World Model and H-MEM engines, outputs" style="width:100%;display:block;border-radius:6px"></div></section>`;
+}
 function md(src) {
   const lines = src.split("\n"); let out = "", inList = false, table = [];
-  const inline = s => chips(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
-  const flushTable = () => { if (!table.length) return; const rows = table.filter(r => !/^\|[\s:-]+\|/.test(r));
+  const inline = s => qids(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  const flush = () => { if (!table.length) return; const rows = table.filter(r => !/^\|[\s:-]+\|/.test(r));
     out += "<table>" + rows.map((r, i) => "<tr>" + r.split("|").slice(1, -1).map(c => i ? `<td>${inline(c.trim())}</td>` : `<th>${inline(c.trim())}</th>`).join("") + "</tr>").join("") + "</table>"; table = []; };
   for (const l of lines) {
-    if (l.trim().startsWith("|")) { table.push(l.trim()); continue; } else flushTable();
+    if (l.trim().startsWith("|")) { table.push(l.trim()); continue; } else flush();
     if (/^\s*[-*] /.test(l)) { if (!inList) { out += "<ul>"; inList = true; } out += `<li>${inline(l.replace(/^\s*[-*] /, ""))}</li>`; continue; }
     if (inList) { out += "</ul>"; inList = false; }
     const h = l.match(/^(#{1,4})\s+(.*)/);
     if (h) out += `<h3>${inline(h[2])}</h3>`; else if (l.trim()) out += `<p>${inline(l)}</p>`;
   }
-  flushTable(); if (inList) out += "</ul>"; return out;
+  flush(); if (inList) out += "</ul>"; return out;
 }
 
-function eventHtml(e) {
-  const t = `<span class="t">${fmtT(e.t)}</span>`;
-  switch (e.event) {
-    case "start": return ["key", `${t}<span class="who">Analyst</span>${esc(e.question)}`];
-    case "retrieve": { const m = e.memories || []; return [m.length ? "good" : "", `${t}<span class="who">H-MEM</span>${m.length ? `Recalled <b>${m.length}</b> lessons from earlier investigations` : "No lessons in memory yet: first investigation in this sector"}`]; }
-    case "model_call": return ["call", `↳ ${esc(e.agent)} · ${esc(short(e.model))} · ${(e.latency_ms / 1000).toFixed(1)} s · ${esc(e.receipt || "")}${e.cached ? " · cached" : ""}`];
-    case "fallback": return ["call fb",`↳ ${esc(e.agent)}: ${esc(short(e.frm))} hung → switched to ${esc(short(e.model))}`];
-    case "plan": return ["key", `${t}<span class="who">Planner</span>${esc(e.plan.company)} ${esc(e.plan.metric)}, ${esc(e.plan.focus_period)} vs ${esc((e.plan.peers || []).join(", "))} · ${(e.plan.hypotheses || []).length} hypotheses`];
-    case "query": return ["", `${t}<span class="who">Investigator · Zetaris</span>${esc(e.purpose)} → <button class="chip" data-q="${e.query_id}">${e.query_id}</button> <span class="muted small">${e.rows} rows</span>`];
-    case "findings": return ["key", `${t}<span class="who">Investigator</span>Proposes ${(e.findings || []).length} findings`];
-    case "recompute": { const p = Object.keys(e.automated_problems || {}); return ["", `${t}<span class="who">Critic · Zetaris</span>Re-ran <b>${e.requeried}</b> cited queries: ${e.reproduced} reproduced exactly. ${p.length ? `Numbers not in the results: ${p.join(", ")}` : "Every number traced to a result."}`]; }
-    case "verdict": return [e.rejected.length ? "badl" : "good", `${t}<span class="who">Critic · round ${e.round}</span>${e.approved.map(i => `<span class="pill ok">${i} approved</span>`).join("")}${e.rejected.map(r => `<span class="pill bad">${r.id} rejected</span>`).join("")}`];
-    case "memo": return ["good", `${t}<span class="who">Reporter</span>Memo written from approved findings only`];
-    case "learn": return ["good", `${t}<span class="who">H-MEM</span>Learned <b>${(e.learned || []).length}</b> lessons from Critic rejections and approved findings`];
-    case "done": return ["key", `${t}<span class="who">Done</span>${e.rounds} Critic rounds · ${fmtT(e.elapsed_s)} wall clock`];
-  }
-  return null;
-}
-const AUTO_TAB = {plan: "Plan", verdict: "Critic", memo: "Memo", learn: "Memory"};
-
-function lastDecomp() { const f = run.events.filter(e => e.event === "findings"); return f.length ? f[f.length - 1].decomposition : null; }
-function reached(ev) { return [...shown].some(s => s.startsWith(ev + ":")); }
-
-function renderKpis() {
-  const dcp = lastDecomp() || {}, s = run.stats, P = run.plan, done = reached("memo");
-  const verdicts = run.events.filter(e => e.event === "verdict" && shown.has("verdict:" + e.round));
-  const last = verdicts[verdicts.length - 1];
-  const k = (l, n, sub, hero) => `<div class="kpi${hero ? " hero" : ""}"><div class="l">${l}</div><div class="n">${n}</div><div class="s">${sub}</div></div>`;
-  $("#kpis").innerHTML =
-    k(`${esc(P.ticker)} gross margin`, done ? fmt(dcp.company_change_pts) : "—", "points, same 10-K") +
-    k("Peer median", done ? fmt(dcp.peer_median_change_pts) : "—", `${(P.peers || []).length} peers`) +
-    k("Company-specific", done ? fmt(dcp.company_specific_pts) : "—", done ? (Math.abs(dcp.company_specific_pts) > Math.abs(dcp.peer_median_change_pts) ? "mostly the company" : "mostly the sector") : "after the Critic approves", true) +
-    k("Critic verdict", last ? `${last.approved.length}/${last.approved.length + last.rejected.length}` : "—", last ? `approved in round ${last.round}` : "waiting for findings") +
-    k("Zetaris queries", run.events.filter(e => e.event === "query" && shown.has("query:")).length ? `${[...document.querySelectorAll("#timeline li")].filter(li => li.textContent.includes("Investigator · Zetaris")).length}` : "0", `+ ${s.recomputes} Critic re-runs`) +
-    k("Nemotron calls", `${document.querySelectorAll("#timeline li.call:not(.fb)").length}`, "each with a Nightshift receipt");
-}
-
-function renderChart() {
-  const q = Object.values(run.queries).find(q => q.agent === "investigator" && q.columns.includes("ticker") && q.columns.some(c => c.includes("gross_margin_change")));
-  if (!q) return $("#chart").innerHTML = "";
-  const ci = q.columns.indexOf("ticker"), vi = q.columns.findIndex(c => c.includes("gross_margin_change"));
-  const rows = q.rows.map(r => [r[ci], r[vi] * (Math.abs(r[vi]) < 1 ? 100 : 1)]).sort((a, b) => a[1] - b[1]);
-  const max = Math.max(...rows.map(r => Math.abs(r[1]))), W = 1000, rowH = 34, mid = 600, scale = 420 / max;
-  const med = lastDecomp() ? lastDecomp().peer_median_change_pts : null;
-  const bars = rows.map(([t, v], i) => {
-    const y = 10 + i * rowH, me = t === run.plan.ticker, w = Math.abs(v) * scale, x = v < 0 ? mid - w : mid;
-    return `<text x="10" y="${y + 19}" font-size="13" font-weight="${me ? 700 : 500}" fill="var(--ink)">${t}${me ? " (asked)" : ""}</text>
-      <rect x="${x}" y="${y + 4}" width="${Math.max(w, 2)}" height="22" rx="6" fill="${me ? "url(#g)" : "var(--line)"}"/>
-      <text x="${v < 0 ? mid + 8 : x + w + 8}" y="${y + 19}" font-size="12.5" text-anchor="start" fill="var(--muted)" font-family="JetBrains Mono, monospace">${fmt(v)} pts</text>`;
-  }).join("");
-  const H = rows.length * rowH + 20;
-  const medLine = med != null ? `<line x1="${mid + med * scale}" x2="${mid + med * scale}" y1="0" y2="${H}" stroke="var(--accent)" stroke-dasharray="4 4"/><text x="${mid + med * scale + 6}" y="${H - 4}" font-size="12" fill="var(--accent)">peer median ${fmt(med)}</text>` : "";
-  $("#chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Gross margin change by company">
-    <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#6d4aff"/><stop offset="1" stop-color="#c06bff"/></linearGradient></defs>
-    <line x1="${mid}" x2="${mid}" y1="0" y2="${H}" stroke="var(--muted)" stroke-opacity=".4"/>${bars}${medLine}</svg>`;
-  $("#chart-sub").innerHTML = `from <button class="chip" data-q="${q.id}">${q.id}</button> · edgar.margin_change, both years from one 10-K`;
-}
-
-function step() {
-  const evs = run.events;
-  while (idx < evs.length) {
-    const e = evs[idx++]; const h = eventHtml(e); if (!h) continue;
-    const li = document.createElement("li"); li.className = h[0]; li.innerHTML = h[1];
-    const tl = $("#timeline"); tl.appendChild(li); tl.scrollTop = tl.scrollHeight;
-    shown.add(e.event + ":" + (e.round || ""));
-    if (AUTO_TAB[e.event] && timer) setTab(AUTO_TAB[e.event]); else renderPane();
-    renderKpis();
-    $("#prog").style.width = (100 * idx / evs.length) + "%";
-    return;
-  }
-  stop();
-}
-function tick() { if (idx >= run.events.length) return stop(); step(); const e = run.events[idx - 1]; timer = setTimeout(tick, e && (e.event === "model_call" || e.event === "fallback") ? +$("#speed").value / 3 : +$("#speed").value); }
-function play() { if (idx >= run.events.length) reset(); $("#play").textContent = "❚❚ Pause"; timer = setTimeout(tick, 100); }
-function stop() { clearTimeout(timer); timer = null; $("#play").textContent = idx >= run.events.length ? "↺ Replay" : "▶ Play"; }
-function reset() { stop(); idx = 0; shown = new Set(); $("#timeline").innerHTML = ""; $("#prog").style.width = 0; setTab("Plan"); renderKpis(); }
-function skipAll() { stop(); while (idx < run.events.length) step(); stop(); renderPane(); renderKpis(); }
-
-function setTab(t) { tab = t; document.querySelectorAll("[data-t]").forEach(b => b.classList.toggle("on", b.dataset.t === t)); renderPane(); }
-
-function renderPane() {
-  const p = $("#pane"), P = run.plan;
-  const wait = what => `<div class="empty">${what} appears when the replay reaches it. Press Play, or Show all.</div>`;
-  if (tab === "Plan") {
-    if (!reached("plan")) return p.innerHTML = wait("The plan");
-    p.innerHTML = `<div class="mini"><div><b>${esc(P.ticker)}</b><span class="muted small">${esc(P.metric)} · ${esc(P.focus_period)}</span></div>
-      <div><b>${(P.peers || []).length} peers</b><span class="muted small">${esc((P.peers || []).join(", "))}</span></div>
-      <div><b>${(P.excluded_peers || []).length} excluded</b><span class="muted small">with a documented reason</span></div></div>
-      ${(P.excluded_peers || []).map(x => `<div class="item"><b>${esc(x.ticker)} excluded:</b> ${esc(x.reason)}</div>`).join("")}
-      <h3 class="sec">Hypotheses · sector-wide and company-specific</h3>
-      ${(P.hypotheses || []).map(h => `<div class="item"><b>${esc(h.id)}</b> ${esc(h.driver)}<div class="muted small">${esc(h.how_to_test)}</div></div>`).join("")}`;
-  } else if (tab === "Critic") {
-    const rounds = run.rounds.filter(r => shown.has("verdict:" + r.round));
-    if (!rounds.length) return p.innerHTML = wait("The Critic's verdicts");
-    p.innerHTML = `<p class="small muted" style="margin-top:0">Approved only if every cited query re-runs in Zetaris with identical rows, every number traces to those rows, and a Nemotron Ultra review passes a methodology checklist. Rejections go back to the Investigator with the fix.</p>` +
-      rounds.map(r => `<h3 class="sec">Round ${r.round} · ${r.critic.approved.length} approved, ${r.critic.rejected.length} rejected</h3>` +
-        [...r.critic.rejected.map(f => [f, false]), ...r.critic.approved.map(f => [f, true])].map(([f, ok]) => `<div class="item ${ok ? "ok" : "bad"}">
-          <span class="pill ${ok ? "ok" : "bad"}">${esc(f.id)} ${ok ? "approved" : "rejected"}</span> ${chips(f.statement)}
-          <div class="small muted">evidence: ${(f.evidence || []).map(q => `<button class="chip" data-q="${q}">${q}</button>`).join(" ")}</div>
-          ${ok ? "" : (f.critic.reasons || []).map(x => `<div class="reason">✗ ${esc(x)}</div>`).join("") + (f.critic.fix ? `<div class="fix"><b>Fix:</b> ${esc(f.critic.fix)}</div>` : "")}
-        </div>`).join("")).reverse().join("");
-  } else if (tab === "Memo") {
-    if (!reached("memo")) return p.innerHTML = wait("The memo");
-    p.innerHTML = `<p class="small muted" style="margin-top:0">Click any query id for the SQL Zetaris ran and the rows behind the number.</p><div class="memo">${md(run.memo)}</div>`;
-  } else if (tab === "Memory") {
-    const rec = run.memory.recalled, learned = run.memory.learned;
-    let h = `<h3 class="sec" style="margin-top:0">Recalled before planning · hybrid score ≥ ${rec.trace.threshold}</h3>`;
-    h += rec.memories.length ? rec.memories.map(m => `<div class="item ok"><span class="bar" style="width:${Math.round(m.score * 140)}px"></span> <b>${m.score}</b> <span class="muted small">· ${esc(m.layer)}</span><div>${esc(m.content)}</div></div>`).join("")
-      : `<div class="item muted">Nothing yet: this is the first investigation in the sector.</div>`;
-    h += `<h3 class="sec">Learned after this run</h3>` + (reached("learn") ? learned.map(m => `<div class="item"><span class="pill ${m.event === "user_correction" ? "bad" : "ok"}">${m.event === "user_correction" ? "from a Critic rejection" : "from an approved finding"}</span><div>${esc(m.content)}</div></div>`).join("") : wait("What it learned"));
-    p.innerHTML = h;
-  } else if (tab === "Evidence") {
-    const qs = Object.values(run.queries).filter(q => q.agent === "investigator");
-    p.innerHTML = `<p class="small muted" style="margin-top:0">Every query the Investigator ran on the Zetaris semantic layer. The Critic re-ran cited ones ${run.stats.recomputes} times.</p>` +
-      qs.map(q => `<div class="item"><button class="chip" data-q="${q.id}">${q.id}</button> ${esc(q.purpose)} <span class="muted small">· ${q.row_count} rows · ${q.elapsed_ms} ms</span></div>`).join("");
-  } else if (tab === "Sponsor tech") {
-    const s = run.stats;
-    p.innerHTML = `<div class="mini"><div><b>${s.queries}</b><span class="muted small">Zetaris queries</span></div><div><b>${s.recomputes}</b><span class="muted small">Critic re-executions</span></div>
-      <div><b>${s.receipts}</b><span class="muted small">Nightshift receipts</span></div><div><b>${run.world.facts ?? "-"}</b><span class="muted small">World Model facts</span></div></div>
-      <h3 class="sec">NVIDIA Nemotron via Meterless Nightshift</h3>
-      ${Object.entries(s.by_model).map(([m, n]) => `<div class="item"><b>${esc(m)}</b> · ${n} calls<div class="muted small">${m.includes("lightning") ? "Planner (thinking off); fallback when Ultra hangs" : "Investigator, Critic, Reporter, H-MEM miner"}</div></div>`).join("")}
-      <h3 class="sec">Zetaris data-quality rules · RUN DQ: 0 invalid records</h3>
-      ${D.dq.map(r => `<div class="item"><b>${esc(r.name)}</b> <span class="muted small">on ${esc(r.table)}</span><div class="small">${esc(r.why)}</div><pre>${esc(r.rule)}</pre></div>`).join("")}
-      <h3 class="sec">Meterless engines</h3>
-      <div class="item"><b>World Model</b> · append-only event log, stable hash IDs, every Zetaris result ingested as facts with provenance. The Critic grounds every quoted number in these facts.</div>
-      <div class="item"><b>H-MEM</b> · tiered memory, hybrid retrieval score, trust ledger and feedback. Critic rejections become lessons the next investigation recalls.</div>`;
-  }
-}
-
+// ------------------------------------------------------------ drawer
+function openDrawer(head, body) { $("#drawer").innerHTML = `<div class="drawer-head"><div>${head}</div><button class="x" id="x" aria-label="Close">${icon("close")}</button></div><div class="drawer-body">${body}</div>`; $("#shell").classList.add("open"); }
+function closeDrawer() { $("#shell").classList.remove("open"); }
 function openQuery(id) {
   const q = run.queries[id]; if (!q) return;
-  $("#drawer").innerHTML = `<button class="btn" style="float:right" onclick="document.querySelector('#drawer').classList.remove('open')">Close</button>
-    <h3 style="margin-top:4px">${esc(id)}</h3><p>${esc(q.purpose)}</p><p class="muted small">${esc(q.agent)} · ${q.row_count} rows · ${q.elapsed_ms} ms in Zetaris</p>
-    <pre>${esc(q.sql)}</pre>${q.error ? `<p class="reason">${esc(q.error)}</p>` : ""}
-    <div style="overflow-x:auto"><table class="rows"><tr>${q.columns.map(c => `<th>${esc(c)}</th>`).join("")}</tr>
-    ${q.rows.map(r => `<tr>${r.map(v => `<td>${esc(typeof v === "number" && !Number.isInteger(v) ? +v.toFixed(6) : v)}</td>`).join("")}</tr>`).join("")}</table></div>
-    ${q.row_count > q.rows.length ? `<p class="muted small">First ${q.rows.length} of ${q.row_count} rows.</p>` : ""}`;
-  $("#drawer").classList.add("open");
+  openDrawer(`<h2 class="mono">${esc(id)}</h2><div class="small muted" style="margin-top:4px">${esc(q.agent)} · Zetaris · ${q.row_count} rows · ${(q.elapsed_ms / 1000).toFixed(1)} s</div>`,
+    `<div><h2 style="font-size:13.5px;margin-bottom:6px">Purpose</h2><div class="ink2">${esc(q.purpose)}</div></div>
+     <div><h2 style="font-size:13.5px;margin-bottom:6px">SQL</h2><pre>${esc(q.sql)}</pre></div>
+     <div><h2 style="font-size:13.5px;margin-bottom:6px">Rows</h2><div class="table-wrap"><table class="t mono"><thead><tr>${q.columns.map(c => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>
+     ${q.rows.map(r => `<tr>${r.map(v => `<td class="${typeof v === "number" ? "num" : ""}">${esc(typeof v === "number" && !Number.isInteger(v) ? +v.toFixed(6) : v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+     ${q.row_count > q.rows.length ? `<div class="small muted" style="margin-top:6px">First ${q.rows.length} of ${q.row_count} rows.</div>` : ""}</div>`);
+}
+function openFinding(key) {
+  const [round, id] = key.split(":"); const r = run.rounds.find(x => String(x.round) === round);
+  const f = [...r.critic.approved, ...r.critic.rejected].find(x => x.id === id); const ok = f.critic.verdict === "approved";
+  openDrawer(`<h2>${esc(f.id)} · round ${round}</h2><div class="row" style="margin-top:8px">${ok ? `<span class="badge good">${icon("check", 12)}Approved</span>` : `<span class="badge critical">${icon("alert", 12)}Rejected</span>`}<span class="badge plain">${esc(f.confidence)}</span><span class="badge plain">${esc(f.scope)}</span></div>`,
+    `<div><h2 style="font-size:13.5px;margin-bottom:6px">Finding</h2><div>${qids(f.statement)}</div></div>
+     ${ok ? `<div class="callout good">${icon("check")}<div>Every cited query re-ran in Zetaris with identical rows, every number traced to them, and the methodology review passed.</div></div>`
+          : `<div class="callout critical">${icon("alert")}<div><b>Why the Critic rejected it</b><ul style="margin:6px 0 0;padding-left:18px">${f.critic.reasons.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></div>
+             ${f.critic.fix ? `<div><h2 style="font-size:13.5px;margin-bottom:6px">Required fix</h2><div class="ink2">${esc(f.critic.fix)}</div></div>` : ""}`}
+     <dl class="kv"><dt>Hypothesis</dt><dd>${esc(f.hypothesis)}</dd><dt>Evidence</dt><dd>${(f.evidence || []).map(qbtn).join(" · ")}</dd>
+     ${Object.entries(f.numbers || {}).map(([k, v]) => `<dt class="mono" style="font-size:12px">${esc(k)}</dt><dd class="mono num">${esc(v)}</dd>`).join("")}</dl>`);
 }
 
-function selectRun(i) {
-  run = D.runs[i]; document.querySelectorAll(".run-card").forEach((b, j) => b.classList.toggle("on", j === i));
-  $("#question").textContent = run.question; $("#crumb").textContent = run.plan.company + " · " + run.plan.focus_period;
-  reset(); renderChart();
+// ------------------------------------------------------------ render
+function renderAll() {
+  renderNav(); renderTop();
+  const p = {overview, critic: criticPage, evidence: evidencePage, memory: memoryPage, stack: stackPage, arch: archPage}[page];
+  $("#content").innerHTML = p();
 }
-
-$("#runs").innerHTML = D.runs.map((r, i) => `<div class="run-card" data-i="${i}"><b>${(LABELS[i] || [r.id])[0]}</b><span>${(LABELS[i] || ["", ""])[1]}</span></div>`).join("");
-$("#tabs").innerHTML = TABS.map(t => `<button data-t="${t}">${t}</button>`).join("");
-$("#tabs-side").innerHTML = TABS.map(t => `<button data-t="${t}"><span class="dot"></span>${t}</button>`).join("");
-$("#runs").onclick = e => { const c = e.target.closest(".run-card"); if (c) selectRun(+c.dataset.i); };
-document.addEventListener("click", e => { const t = e.target.closest("[data-t]"); if (t) setTab(t.dataset.t); if (e.target.dataset && e.target.dataset.q) openQuery(e.target.dataset.q); });
-$("#play").onclick = () => timer ? stop() : play();
-$("#skip").onclick = skipAll;
-document.addEventListener("keydown", e => { if (e.key === "Escape") $("#drawer").classList.remove("open"); });
-selectRun(0);
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-q],[data-f],[data-page],[data-run],#b-play,#b-all,#x,#scrim");
+  if (!t) return;
+  if (t.id === "b-play") return play();
+  if (t.id === "b-all") return showAll();
+  if (t.id === "x" || t.id === "scrim") return closeDrawer();
+  if (t.dataset.q) return openQuery(t.dataset.q);
+  if (t.dataset.f) return openFinding(t.dataset.f);
+  if (t.dataset.page) { page = t.dataset.page; closeDrawer(); return renderAll(); }
+  if (t.dataset.run) { clearTimeout(timer); timer = null; ri = +t.dataset.run; run = D.runs[ri]; idx = run.events.length; page = "overview"; closeDrawer(); return renderAll(); }
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+idx = run.events.length;
+renderAll();
 </script>
 </body>
 </html>
